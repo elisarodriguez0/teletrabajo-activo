@@ -561,7 +561,6 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
       renderAll();
       renderTodos();
       applyTodoCompact();
-      placeTodoCard();
       startClock();
     }
 
@@ -595,21 +594,18 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
         saveSettings(settings);
         buildWeek(true);
         renderAll();
-        placeTodoCard();
-      });
+        });
 
       els.generateBtn.addEventListener('click', () => {
         buildWeek(true);
         renderAll();
-        placeTodoCard();
-      });
+        });
 
       els.todayBtn.addEventListener('click', () => {
         debugOffsetMs = 0;
         selectInitialDay();
         renderAll();
-        placeTodoCard();
-      });
+        });
 
       els.skipBtn.addEventListener('click', () => {
         const info = getCurrentInfo(getNow(), selectedDayKey);
@@ -617,8 +613,7 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
         const jumpTo = new Date(info.currentEvent.end.getTime() + 1000);
         debugOffsetMs = jumpTo.getTime() - Date.now();
         renderAll();
-        placeTodoCard();
-      });
+        });
 
       els.todoAddBtn.addEventListener('click', addTodoFromInput);
       els.todoCompactBtn.addEventListener('click', toggleTodoCompact);
@@ -692,7 +687,6 @@ function loadSettings() {
       if (!els.app || !els.todoCompactBtn) return;
       els.app.classList.toggle('todo-compact', !!todoCompact);
       els.todoCompactBtn.textContent = todoCompact ? 'Quitar lateral' : 'Modo compacto lateral';
-      placeTodoCard();
     }
 
     function toggleTodoCompact() {

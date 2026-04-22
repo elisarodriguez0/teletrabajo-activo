@@ -468,3 +468,52 @@
     .app.todo-compact .grid > #strengthCard {
       grid-column: 1 / span 12;
     }
+
+
+/* Compact mode: only the todo card moves to the side */
+.app.todo-compact #todoCard {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  width: 340px;
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+  z-index: 30;
+}
+
+.app.todo-compact {
+  max-width: none;
+  margin: 0 auto;
+  padding-right: 380px;
+}
+
+.app.todo-compact #summaryCard,
+.app.todo-compact #planCard {
+  position: static !important;
+  transform: none !important;
+  top: auto !important;
+  right: auto !important;
+  left: auto !important;
+  width: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  z-index: auto !important;
+}
+
+.app.todo-compact #summaryCard,
+.app.todo-compact #planCard,
+.app.todo-compact #strengthCard {
+  grid-column: span 12 !important;
+}
+
+@media (max-width: 1200px) {
+  .app.todo-compact {
+    padding-right: 0;
+  }
+
+  .app.todo-compact #todoCard {
+    position: static;
+    width: auto;
+    max-height: none;
+  }
+}
