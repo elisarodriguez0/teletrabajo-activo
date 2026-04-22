@@ -1,5 +1,5 @@
-const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
-    const SHORT_DAY = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+const DAY_NAMES_BY_LANG = { es: ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'], en: ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'] };
+    const SHORT_DAY_BY_LANG = { es: ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'], en: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'] };
     const WORK_TAGS = {
       sit: { label: 'Sentada', cls: 'sit' },
       stand: { label: 'De pie', cls: 'stand' },
@@ -472,6 +472,11 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
       }
     };
 
+    const STRINGS = {
+      es: {langLabel:'Idioma',pillWeekdays:'Lunes a viernes',pillDesk:'Escritorio elevable',pillTimer:'Crono activo',pillVariety:'Aleatoriedad útil',heroTitle:'Teletrabajo Activo',heroDesc:'Versión pensada para ordenador. La enciendes al fichar, dejas la pestaña abierta y te va guiando con bloques de sentada, de pie, movimiento y fuerza extra colocada de forma aleatoria fuera de tus días de gimnasio.',stateNowTitle:'Estado ahora',labelShownDay:'Día mostrado',labelCurrentPhase:'Fase actual',labelCountdown:'Cuenta atrás',labelNextAlarm:'Próxima alarma',mainTimerTitle:'Crono principal',mainTimerDesc:'Usa esto con la pestaña abierta en el ordenador. Cuando cambie el bloque te sonará una alarma si activas el audio.',btnEnableSound:'Activar sonido',btnSoundOn:'Sonido activado',btnEnableNotifications:'Activar notificaciones',btnNotifOn:'Notificaciones activadas',btnNotifBlocked:'Notificaciones bloqueadas',btnGenerate:'Regenerar día mostrado',btnToday:'Volver a hoy',btnSkip:'Saltar bloque',desktopNotice:'Pensada para escritorio. Si cambias de pestaña, la app intenta avisarte con sonido, voz y título parpadeando.',weekSettingsTitle:'Semana y ajustes',startLabel:'Empiezas',endLabel:'Terminas',lunchLabel:'Comida',lunchMinutesLabel:'Minutos comida',sitMinutesLabel:'Minutos sentada',standMinutesLabel:'Minutos de pie',moveMinutesLabel:'Minutos movilidad',strengthPerWeekLabel:'Fuerza real por semana',strengthSessionsOptions:['1 sesión','2 sesiones','3 sesiones'],randomnessLabel:'Variación de ejercicios',randomnessOptions:['Suave','Media','Alta'],randomTooltip:'No cambia la duración de los bloques. Solo cambia el tipo y la variedad de ejercicios.',allowWalkLabel:'Permitir caminata corta',allowWalkOptions:['No','Sí'],gymDaysLabel:'Días de gimnasio',saveBtn:'Guardar y regenerar semana',guidedBlockTitle:'Bloque guiado',blockDetailTitle:'Detalle del bloque',blockDetailDesc:'Aquí tienes explicado el movimiento o ejercicio que toca en cada momento.',todoTitle:'To do list',todoDesc:'Añade tareas rápidas, reordénalas arrastrando y márcalas al completarlas.',todoCompactOff:'Modo compacto lateral',todoCompactOn:'Quitar lateral',todoPlaceholder:'Añade una tarea',todoAddBtn:'Añadir tarea',summaryTitle:'Resumen del día mostrado',dayPlanTitle:'Plan del día',strengthWeekTitle:'Sesiones de fuerza de la semana',strengthWeekDesc:'Se colocan fuera de tus días de gimnasio. Si ya tienes gimnasio ese día, la app no te mete fuerza extra ahí.',soundError:'No pude activar el sonido. Haz clic otra vez.',notifUnsupported:'Este navegador no soporta notificaciones web.',todoEmpty:'Todavía no has añadido tareas.',deleteBtn:'Borrar',preview:'Vista previa',previewDesc:'Estás viendo otro día de la semana. El crono solo corre con el día real.',nextBlock:'Siguiente bloque',beforeStart:'Antes de empezar',outOfHours:'Fuera de horario',waitingDay:'Tu jornada está preparada y esperando.',dayFinished:'Tu jornada ha terminado.',noBlocks:'ninguno',endOfDay:'fin del día',shownDayReal:'Hoy real.',shownDaySelected:'Día de la semana seleccionado.',todayLabelPrefix:'Así queda',noDay:'Sin día',dayError:'No he podido generar el día mostrado.',regenerateHint:'Prueba a regenerar la semana.',strengthTag:'Fuerza',noExtraSession:'Sin sesión extra',gymThatDay:'Ese día ya haces gimnasio.',noStrengthDay:'Día libre de fuerza real.',gymTag:'Gimnasio',freeTag:'Libre',allGymNotice:'Todos tus días entre semana tienen gimnasio marcado. Por eso no he metido fuerza extra.',totalPlanned:'Total planificado',statLabels:['Sentada','De pie','Movimiento','Fuerza'],tabPreview:'Vista previa',tabBefore:'Empieza',tabEnded:'Día terminado',blockStep:'Paso del bloque',stepNow:'Ahora mismo',previewLabel:'Vista previa',secondsLeft:'quedan',noGuidedBlock:'No hay bloque guiado activo ahora mismo.',guidedPreview:'Vista previa del bloque guiado.',standGuided:'Bloque de pie. Mantén pies firmes, reparte peso y relaja hombros.',sitGuided:'Bloque sentada. Pies apoyados, cuello largo y ratón cerca.',lunchGuided:'Comida y descanso.',noStepGuided:'Este bloque no tiene pasos guiados.',standChecklist:['Pies bien apoyados.','Pantalla a buena altura.','Microcambios de peso cada poco.'],sitChecklist:['Pies apoyados.','Ratón y teclado cerca.','No te quedes congelada toda la hora.'],restChecklist:['Descansa y vuelve sin prisa.'],standTip:'Estar de pie inmóvil tampoco es la panacea. Cambia postura.',generalTip:'El objetivo es que el cuerpo no se quede tieso.',speechPrefix:'Cambio de bloque'},
+      en: {langLabel:'Language',pillWeekdays:'Monday to Friday',pillDesk:'Standing desk',pillTimer:'Active timer',pillVariety:'Useful variety',heroTitle:'Active Remote Work',heroDesc:'Desktop version. Start it when you clock in, keep the tab open, and it guides you through sitting, standing, movement, and extra strength blocks outside your gym days.',stateNowTitle:'Current status',labelShownDay:'Shown day',labelCurrentPhase:'Current phase',labelCountdown:'Countdown',labelNextAlarm:'Next alarm',mainTimerTitle:'Main timer',mainTimerDesc:'Use this with the tab open on your computer. When the block changes, you will hear an alarm if audio is enabled.',btnEnableSound:'Enable sound',btnSoundOn:'Sound enabled',btnEnableNotifications:'Enable notifications',btnNotifOn:'Notifications enabled',btnNotifBlocked:'Notifications blocked',btnGenerate:'Regenerate shown day',btnToday:'Back to today',btnSkip:'Skip block',desktopNotice:'Built for desktop. If you switch tabs, the app tries to alert you with sound, voice, and a flashing tab title.',weekSettingsTitle:'Week and settings',startLabel:'Start',endLabel:'End',lunchLabel:'Lunch',lunchMinutesLabel:'Lunch minutes',sitMinutesLabel:'Sitting minutes',standMinutesLabel:'Standing minutes',moveMinutesLabel:'Movement minutes',strengthPerWeekLabel:'Strength sessions per week',strengthSessionsOptions:['1 session','2 sessions','3 sessions'],randomnessLabel:'Exercise variation',randomnessOptions:['Low','Medium','High'],randomTooltip:'This does not change block duration. It only changes the type and variety of exercises.',allowWalkLabel:'Allow short walk',allowWalkOptions:['No','Yes'],gymDaysLabel:'Gym days',saveBtn:'Save and regenerate week',guidedBlockTitle:'Guided block',blockDetailTitle:'Block detail',blockDetailDesc:'This explains the movement or exercise you should do at that moment.',todoTitle:'To do list',todoDesc:'Add quick tasks, drag to reorder them, and tick them off when completed.',todoCompactOff:'Compact side mode',todoCompactOn:'Hide side panel',todoPlaceholder:'Add a task',todoAddBtn:'Add task',summaryTitle:'Shown day summary',dayPlanTitle:'Day plan',strengthWeekTitle:'Weekly strength sessions',strengthWeekDesc:'These are placed outside your gym days. If you already have gym that day, the app does not schedule extra strength there.',soundError:'Could not enable sound. Click again.',notifUnsupported:'This browser does not support web notifications.',todoEmpty:'You have not added any tasks yet.',deleteBtn:'Delete',preview:'Preview',previewDesc:'You are viewing another day of the week. The timer only runs for the real current day.',nextBlock:'Next block',beforeStart:'Before start',outOfHours:'Outside working hours',waitingDay:'Your day is ready and waiting.',dayFinished:'Your day has ended.',noBlocks:'none',endOfDay:'end of day',shownDayReal:'Real today.',shownDaySelected:'Selected weekday.',todayLabelPrefix:'This is',noDay:'No day',dayError:'Could not generate the shown day.',regenerateHint:'Try regenerating the week.',strengthTag:'Strength',noExtraSession:'No extra session',gymThatDay:'You already have gym that day.',noStrengthDay:'No extra strength that day.',gymTag:'Gym',freeTag:'Free',allGymNotice:'All weekdays are marked as gym days, so no extra strength sessions were added.',totalPlanned:'Total planned',statLabels:['Sitting','Standing','Movement','Strength'],tabPreview:'Preview',tabBefore:'Starts',tabEnded:'Day finished',blockStep:'Block step',stepNow:'Right now',previewLabel:'Preview',secondsLeft:'left',noGuidedBlock:'There is no guided block active right now.',guidedPreview:'Guided block preview.',standGuided:'Standing block. Keep your feet grounded, shift your weight, and relax your shoulders.',sitGuided:'Sitting block. Keep feet supported, neck long, and mouse close.',lunchGuided:'Lunch and rest.',noStepGuided:'This block has no guided steps.',standChecklist:['Feet grounded.','Screen at a good height.','Shift your weight every so often.'],sitChecklist:['Feet supported.','Mouse and keyboard close.','Do not stay frozen the whole hour.'],restChecklist:['Rest and come back calmly.'],standTip:'Standing still forever is not the answer either. Change posture.',generalTip:'The goal is to stop your body from getting stiff.',speechPrefix:'Block change'}
+    };
+
     const defaults = {
       startTime: '08:00',
       endTime: '18:00',
@@ -499,9 +504,11 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
     const BASE_TITLE = document.title;
     let todoItems = loadTodos();
     let todoCompact = loadTodoCompact();
+    let currentLanguage = loadLanguage();
 
     const els = {
       app: document.querySelector('.app'),
+      langSelect: document.getElementById('langSelect'),
       shownDay: document.getElementById('shownDay'),
       shownDaySub: document.getElementById('shownDaySub'),
       currentPhase: document.getElementById('currentPhase'),
@@ -550,9 +557,19 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
       todoList: document.getElementById('todoList'),
     };
 
+
+    function loadLanguage() { const saved = localStorage.getItem('tt-active-lang'); return saved && STRINGS[saved] ? saved : 'es'; }
+    function saveLanguage(lang) { localStorage.setItem('tt-active-lang', lang); }
+    function tr(key) { return (STRINGS[currentLanguage] && STRINGS[currentLanguage][key]) || STRINGS.es[key] || key; }
+    function dayNames() { return DAY_NAMES_BY_LANG[currentLanguage] || DAY_NAMES_BY_LANG.es; }
+    function shortDayNames() { return SHORT_DAY_BY_LANG[currentLanguage] || SHORT_DAY_BY_LANG.es; }
+    function setText(id, value) { const el = document.getElementById(id); if (el) el.textContent = value; }
+    function applyLanguage() { document.documentElement.lang = currentLanguage; if (els.langSelect) els.langSelect.value = currentLanguage; ['langLabel','pillWeekdays','pillDesk','pillTimer','pillVariety','heroTitle','heroDesc','stateNowTitle','labelShownDay','labelCurrentPhase','labelCountdown','labelNextAlarm','mainTimerTitle','mainTimerDesc','desktopNotice','weekSettingsTitle','startLabel','endLabel','lunchLabel','lunchMinutesLabel','sitMinutesLabel','standMinutesLabel','moveMinutesLabel','strengthPerWeekLabel','gymDaysLabel','guidedBlockTitle','blockDetailTitle','blockDetailDesc','todoTitle','todoDesc','summaryTitle','dayPlanTitle','strengthWeekTitle','strengthWeekDesc'].forEach(id=>setText(id, tr(id))); if (els.soundBtn) els.soundBtn.textContent = soundEnabled ? tr('btnSoundOn') : tr('btnEnableSound'); if (els.notifBtn) els.notifBtn.textContent = notificationsEnabled ? tr('btnNotifOn') : tr('btnEnableNotifications'); if (els.generateBtn) els.generateBtn.textContent = tr('btnGenerate'); if (els.todayBtn) els.todayBtn.textContent = tr('btnToday'); if (els.skipBtn) els.skipBtn.textContent = tr('btnSkip'); if (els.saveBtn) els.saveBtn.textContent = tr('saveBtn'); if (els.todoCompactBtn) els.todoCompactBtn.textContent = todoCompact ? tr('todoCompactOn') : tr('todoCompactOff'); if (els.todoAddBtn) els.todoAddBtn.textContent = tr('todoAddBtn'); if (els.todoInput) els.todoInput.placeholder = tr('todoPlaceholder'); const rl=document.getElementById('randomnessLabel'); if (rl && rl.firstChild) rl.firstChild.textContent = tr('randomnessLabel') + ' '; const rb=document.getElementById('randomTooltipBtn'); if (rb) { rb.title = tr('randomTooltip'); rb.setAttribute('aria-label', tr('randomTooltip')); } setText('randomTooltipBox', tr('randomTooltip')); setText('allowWalkLabel', tr('allowWalkLabel')); document.querySelectorAll('#strengthSessions option').forEach((o,i)=>o.textContent=(tr('strengthSessionsOptions')[i]||o.textContent)); document.querySelectorAll('#randomness option').forEach((o,i)=>o.textContent=(tr('randomnessOptions')[i]||o.textContent)); document.querySelectorAll('#allowWalk option').forEach((o,i)=>o.textContent=(tr('allowWalkOptions')[i]||o.textContent)); }
+
     init();
 
     function init() {
+      applyLanguage();
       paintSettings();
       renderFitboxing();
       buildWeek();
@@ -571,22 +588,22 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
           await audioContext.resume();
           soundEnabled = true;
           localStorage.setItem('tt-active-sound', 'true');
-          els.soundBtn.textContent = 'Sonido activado';
+          els.soundBtn.textContent = tr('btnSoundOn');
           quickBeep();
         } catch (e) {
-          alert('No pude activar el sonido. Haz clic otra vez.');
+          alert(tr('soundError'));
         }
       });
 
       els.notifBtn.addEventListener('click', async () => {
         if (!('Notification' in window)) {
-          alert('Este navegador no soporta notificaciones web.');
+          alert(tr('notifUnsupported'));
           return;
         }
         const permission = await Notification.requestPermission();
         notificationsEnabled = permission === 'granted';
         localStorage.setItem('tt-active-notif', notificationsEnabled ? 'true' : 'false');
-        els.notifBtn.textContent = notificationsEnabled ? 'Notificaciones activadas' : 'Notificaciones bloqueadas';
+        els.notifBtn.textContent = notificationsEnabled ? tr('btnNotifOn') : tr('btnNotifBlocked');
       });
 
       els.saveBtn.addEventListener('click', () => {
@@ -620,6 +637,15 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
       els.todoInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') addTodoFromInput();
       });
+      if (els.langSelect) {
+        els.langSelect.addEventListener('change', () => {
+          currentLanguage = els.langSelect.value;
+          saveLanguage(currentLanguage);
+          applyLanguage();
+          renderAll();
+          renderTodos();
+        });
+      }
       document.addEventListener('visibilitychange', () => {
         if (!document.hidden) {
           stopTitleFlash();
@@ -686,7 +712,7 @@ function loadSettings() {
     function applyTodoCompact() {
       if (!els.app || !els.todoCompactBtn) return;
       els.app.classList.toggle('todo-compact', !!todoCompact);
-      els.todoCompactBtn.textContent = todoCompact ? 'Quitar lateral' : 'Modo compacto lateral';
+      els.todoCompactBtn.textContent = todoCompact ? tr('todoCompactOn') : tr('todoCompactOff');
     }
 
     function toggleTodoCompact() {
@@ -723,7 +749,7 @@ function renderTodos() {
       if (!todoItems.length) {
         const empty = document.createElement('div');
         empty.className = 'notice';
-        empty.textContent = 'Todavía no has añadido tareas.';
+        empty.textContent = tr('todoEmpty');
         els.todoList.appendChild(empty);
         return;
       }
@@ -770,7 +796,7 @@ function renderTodos() {
         const removeBtn = document.createElement('button');
         removeBtn.className = 'todo-remove';
         removeBtn.type = 'button';
-        removeBtn.textContent = 'Borrar';
+        removeBtn.textContent = tr('deleteBtn');
         removeBtn.addEventListener('click', () => removeTodo(item.id));
 
         row.appendChild(handle);
@@ -803,8 +829,8 @@ function renderTodos() {
       els.strengthSessions.value = String(settings.strengthSessions);
       els.randomness.value = settings.randomness;
       els.allowWalk.value = settings.allowWalk ? 'yes' : 'no';
-      els.soundBtn.textContent = soundEnabled ? 'Sonido activado' : 'Activar sonido';
-      els.notifBtn.textContent = notificationsEnabled ? 'Notificaciones activadas' : 'Activar notificaciones';
+      els.soundBtn.textContent = soundEnabled ? tr('btnSoundOn') : tr('btnEnableSound');
+      els.notifBtn.textContent = notificationsEnabled ? tr('btnNotifOn') : tr('btnEnableNotifications');
     }
 
     function readSettingsFromForm() {
@@ -836,7 +862,7 @@ function renderTodos() {
           if (!input.checked) settings.fitboxingDays = settings.fitboxingDays.filter(d => d !== day);
         });
         label.appendChild(input);
-        label.appendChild(document.createTextNode(SHORT_DAY[day]));
+        label.appendChild(document.createTextNode(shortDayNames()[day]));
         els.fitboxingDays.appendChild(label);
       });
     }
@@ -871,7 +897,7 @@ function renderTodos() {
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'weekday-btn' + (selectedDayKey === key ? ' active' : '');
-        btn.textContent = `${SHORT_DAY[date.getDay()]} ${date.getDate()}`;
+        btn.textContent = `${shortDayNames()[date.getDay()]} ${date.getDate()}`;
         btn.addEventListener('click', () => {
           selectedDayKey = key;
           lastAlarmEventId = null;
@@ -1030,16 +1056,16 @@ function generateDayPlan(date, cfg, rng, includeStrength) {
       const day = weekPlan.days[selectedDayKey];
       els.timeline.innerHTML = '';
       if (!day) {
-        els.todayLabel.textContent = 'No he podido generar el día mostrado.';
-        els.shownDay.textContent = 'Sin día';
-        els.shownDaySub.textContent = 'Prueba a regenerar la semana.';
+        els.todayLabel.textContent = tr('dayError');
+        els.shownDay.textContent = tr('noDay');
+        els.shownDaySub.textContent = tr('regenerateHint');
         return;
       }
 
       const date = new Date(selectedDayKey + 'T12:00:00');
-      els.shownDay.textContent = `${capitalize(DAY_NAMES[date.getDay()])} ${date.getDate()}/${date.getMonth() + 1}`;
-      els.shownDaySub.textContent = selectedDayKey === toDateKey(getNow()) ? 'Hoy real.' : 'Día de la semana seleccionado.';
-      els.todayLabel.textContent = `Así queda ${capitalize(DAY_NAMES[date.getDay()])}.`;
+      els.shownDay.textContent = `${capitalize(dayNames()[date.getDay()])} ${date.getDate()}/${date.getMonth() + 1}`;
+      els.shownDaySub.textContent = selectedDayKey === toDateKey(getNow()) ? tr('shownDayReal') : tr('shownDaySelected');
+      els.todayLabel.textContent = `${tr('todayLabelPrefix')} ${capitalize(dayNames()[date.getDay()])}.`;
 
       const now = getNow();
       const currentInfo = getCurrentInfo(now, selectedDayKey);
@@ -1102,21 +1128,21 @@ function generateDayPlan(date, cfg, rng, includeStrength) {
         if (plan.strength) {
           hasAny = true;
           row.innerHTML = `
-            <div class="event-time">${SHORT_DAY[date.getDay()]}</div>
+            <div class="event-time">${shortDayNames()[date.getDay()]}</div>
             <div>
               <div class="event-title">${plan.strength.title}</div>
               <div class="small">${formatHM(new Date(plan.strength.start))} a ${formatHM(new Date(plan.strength.end))}. ${plan.strength.description}</div>
             </div>
-            <div class="tag strength">Fuerza</div>
+            <div class="tag strength">${tr('strengthTag')}</div>
           `;
         } else {
           row.innerHTML = `
-            <div class="event-time">${SHORT_DAY[date.getDay()]}</div>
+            <div class="event-time">${shortDayNames()[date.getDay()]}</div>
             <div>
-              <div class="event-title">Sin sesión extra</div>
-              <div class="small">${plan.fitboxing ? 'Ese día ya haces gimnasio.' : 'Día libre de fuerza real.'}</div>
+              <div class="event-title">${tr('noExtraSession')}</div>
+              <div class="small">${plan.fitboxing ? tr('gymThatDay') : tr('noStrengthDay')}</div>
             </div>
-            <div class="tag ${plan.fitboxing ? 'move' : 'lunch'}">${plan.fitboxing ? 'Gimnasio' : 'Libre'}</div>
+            <div class="tag ${plan.fitboxing ? 'move' : 'lunch'}">${plan.fitboxing ? tr('gymTag') : tr('freeTag')}</div>
           `;
         }
         els.strengthTimeline.appendChild(row);
@@ -1124,7 +1150,7 @@ function generateDayPlan(date, cfg, rng, includeStrength) {
       if (!hasAny) {
         const div = document.createElement('div');
         div.className = 'notice';
-        div.textContent = 'Todos tus días entre semana tienen gimnasio marcado. Por eso no he metido fuerza extra.';
+        div.textContent = tr('allGymNotice');
         els.strengthTimeline.appendChild(div);
       }
     }
@@ -1141,14 +1167,14 @@ function generateDayPlan(date, cfg, rng, includeStrength) {
       const total = sit + stand + move + strength;
       els.stats.innerHTML = '';
       [
-        ['Sentada', `${sit} min`],
-        ['De pie', `${stand} min`],
-        ['Movimiento', `${move} min`],
-        ['Fuerza', `${strength} min`]
+        [tr('statLabels')[0], `${sit} min`],
+        [tr('statLabels')[1], `${stand} min`],
+        [tr('statLabels')[2], `${move} min`],
+        [tr('statLabels')[3], `${strength} min`]
       ].forEach(([label, value]) => {
         const div = document.createElement('div');
         div.className = 'stat';
-        div.innerHTML = `<div class="label">${label}</div><div class="value">${value}</div><div class="small">Total planificado: ${total} min</div>`;
+        div.innerHTML = `<div class="label">${label}</div><div class="value">${value}</div><div class="small">${tr('totalPlanned')}: ${total} min</div>`;
         els.stats.appendChild(div);
       });
     }
@@ -1170,19 +1196,19 @@ function generateDayPlan(date, cfg, rng, includeStrength) {
 
     function updateTabTitle(state, payload = {}) {
       if (state === 'preview') {
-        setBaseTabTitle('Vista previa · Teletrabajo Activo');
+        setBaseTabTitle(`${tr('tabPreview')} · ${tr('heroTitle')}`);
         return;
       }
       if (state === 'before') {
-        setBaseTabTitle(`Empieza ${payload.time || '--:--'} · Teletrabajo Activo`);
+        setBaseTabTitle(`${tr('tabBefore')} ${payload.time || '--:--'} · ${tr('heroTitle')}`);
         return;
       }
       if (state === 'after') {
-        setBaseTabTitle('Día terminado · Teletrabajo Activo');
+        setBaseTabTitle(`${tr('tabEnded')} · ${tr('heroTitle')}`);
         return;
       }
       if (state === 'current') {
-        setBaseTabTitle(`${payload.timeLeft || '--:--'} · ${payload.title || 'Bloque activo'}`);
+        setBaseTabTitle(`${payload.timeLeft || '--:--'} · ${payload.title || tr('labelCurrentPhase')}`);
       }
     }
 
@@ -1196,13 +1222,13 @@ function generateDayPlan(date, cfg, rng, includeStrength) {
       const isToday = selectedDayKey === todayKey;
 
       if (!isToday) {
-        els.currentPhase.textContent = 'Vista previa';
-        els.currentDescription.textContent = 'Estás viendo otro día de la semana. El crono solo corre con el día real.';
+        els.currentPhase.textContent = tr('preview');
+        els.currentDescription.textContent = tr('previewDesc');
         els.timeLeft.textContent = '--:--';
-        els.nextPhase.textContent = 'Siguiente bloque: vista previa';
+        els.nextPhase.textContent = `${tr('nextBlock')}: ${tr('preview').toLowerCase()}`;
         els.nextAlarm.textContent = '--:--';
-        els.alarmDescription.textContent = `Día mostrado: ${capitalize(DAY_NAMES[selectedDate.getDay()])}.`;
-        setTimer(0, 1, 'Vista previa del día');
+        els.alarmDescription.textContent = `Día mostrado: ${capitalize(dayNames()[selectedDate.getDay()])}.`;
+        setTimer(0, 1, tr('preview'));
         refreshTimelineCurrent(now, null);
         const previewEvent = weekPlan.days[selectedDayKey].events.find(evt => evt.type === 'move') || weekPlan.days[selectedDayKey].strength || weekPlan.days[selectedDayKey].events[0];
         renderGuided(previewEvent ? { ...previewEvent, start: new Date(previewEvent.start), end: new Date(previewEvent.end) } : null, new Date(previewEvent ? previewEvent.start : Date.now()), true);
@@ -1214,13 +1240,13 @@ function generateDayPlan(date, cfg, rng, includeStrength) {
         const firstEvent = info.events[0] || null;
         const lastEvent = info.events.length ? info.events[info.events.length - 1] : null;
         const beforeStart = firstEvent && now < firstEvent.start;
-        els.currentPhase.textContent = beforeStart ? 'Antes de empezar' : 'Fuera de horario';
-        els.currentDescription.textContent = beforeStart ? 'Tu jornada está preparada y esperando.' : 'Tu jornada ha terminado.';
+        els.currentPhase.textContent = beforeStart ? tr('beforeStart') : tr('outOfHours');
+        els.currentDescription.textContent = beforeStart ? tr('waitingDay') : tr('dayFinished');
         els.timeLeft.textContent = '--:--';
-        els.nextPhase.textContent = info.nextEvent ? `Siguiente bloque: ${info.nextEvent.title}` : 'Siguiente bloque: ninguno';
+        els.nextPhase.textContent = info.nextEvent ? `${tr('nextBlock')}: ${info.nextEvent.title}` : `${tr('nextBlock')}: ${tr('noBlocks')}`;
         els.nextAlarm.textContent = info.nextEvent ? formatHM(info.nextEvent.start) : '--:--';
         els.alarmDescription.textContent = info.nextEvent ? describeEvent(info.nextEvent) : (lastEvent ? `Último bloque terminado a las ${formatHM(lastEvent.end)}.` : 'Sin bloques.');
-        setTimer(0, 1, beforeStart ? 'Esperando inicio' : 'Día terminado');
+        setTimer(0, 1, beforeStart ? tr('beforeStart') : tr('tabEnded'));
         refreshTimelineCurrent(now, null);
         const guideEvent = beforeStart ? info.nextEvent : null;
         renderGuided(guideEvent, now, !!beforeStart);
@@ -1234,7 +1260,7 @@ function generateDayPlan(date, cfg, rng, includeStrength) {
       els.currentPhase.textContent = current.title;
       els.currentDescription.textContent = current.description;
       els.timeLeft.textContent = formatMMSS(Math.max(0, Math.floor(timeLeftMs / 1000)));
-      els.nextPhase.textContent = info.nextEvent ? `Siguiente bloque: ${info.nextEvent.title}` : 'Siguiente bloque: fin del día';
+      els.nextPhase.textContent = info.nextEvent ? `${tr('nextBlock')}: ${info.nextEvent.title}` : `${tr('nextBlock')}: ${tr('endOfDay')}`;
       els.nextAlarm.textContent = formatHM(current.end);
       els.alarmDescription.textContent = info.nextEvent ? describeEvent(info.nextEvent) : 'Se acaba la jornada.';
       setTimer(Math.max(0, totalMs - timeLeftMs), totalMs, current.title);
@@ -1286,8 +1312,8 @@ function generateDayPlan(date, cfg, rng, includeStrength) {
       if (!('speechSynthesis' in window)) return;
       try {
         window.speechSynthesis.cancel();
-        const utter = new SpeechSynthesisUtterance(`Cambio de bloque. ${title}`);
-        utter.lang = 'es-ES';
+        const utter = new SpeechSynthesisUtterance(`${tr('speechPrefix')}. ${title}`);
+        utter.lang = currentLanguage === 'en' ? 'en-US' : 'es-ES';
         utter.rate = 1;
         utter.volume = 1;
         window.speechSynthesis.speak(utter);
@@ -1312,7 +1338,7 @@ function generateDayPlan(date, cfg, rng, includeStrength) {
 
     function renderGuided(event, now, previewMode) {
       if (!event) {
-        els.guidedTitle.textContent = previewMode ? 'Vista previa del bloque guiado.' : 'No hay bloque guiado activo ahora mismo.';
+        els.guidedTitle.textContent = previewMode ? tr('guidedPreview') : tr('noGuidedBlock');
         els.guidedSteps.innerHTML = '';
         paintExerciseDetail(null, previewMode);
         return;
@@ -1320,22 +1346,22 @@ function generateDayPlan(date, cfg, rng, includeStrength) {
 
       if (!event.routine || (event.type !== 'move' && event.type !== 'strength')) {
         els.guidedTitle.textContent = event.type === 'stand'
-          ? 'Bloque de pie. Mantén pies firmes, reparte peso y relaja hombros.'
+          ? tr('standGuided')
           : event.type === 'sit'
-            ? 'Bloque sentada. Pies apoyados, cuello largo y ratón cerca.'
+            ? tr('sitGuided')
             : event.type === 'lunch'
-              ? 'Comida y descanso.'
-              : 'Este bloque no tiene pasos guiados.';
+              ? tr('lunchGuided')
+              : tr('noStepGuided');
         els.guidedSteps.innerHTML = '';
         paintExerciseDetail({
           name: event.title,
           summary: event.description,
           checklist: event.type === 'stand'
-            ? ['Pies bien apoyados.', 'Pantalla a buena altura.', 'Microcambios de peso cada poco.']
+            ? tr('standChecklist')
             : event.type === 'sit'
-              ? ['Pies apoyados.', 'Ratón y teclado cerca.', 'No te quedes congelada toda la hora.']
-              : ['Descansa y vuelve sin prisa.'],
-          tip: event.type === 'stand' ? 'Estar de pie inmóvil tampoco es la panacea. Cambia postura.' : 'El objetivo es que el cuerpo no se quede tieso.'
+              ? tr('sitChecklist')
+              : tr('restChecklist'),
+          tip: event.type === 'stand' ? tr('standTip') : tr('generalTip')
         }, previewMode, 'stand');
         return;
       }
@@ -1356,12 +1382,12 @@ function generateDayPlan(date, cfg, rng, includeStrength) {
         const row = document.createElement('div');
         row.className = 'step' + (isCurrent ? ' current' : '') + (previewMode && index === 0 ? ' selected' : '');
         let right = `${seconds}s`;
-        let subtitle = 'Paso del bloque';
+        let subtitle = tr('blockStep');
         if (isCurrent) {
-          right = `quedan ${Math.max(0, end - elapsedSec)}s`;
-          subtitle = 'Ahora mismo';
+          right = `${Math.max(0, end - elapsedSec)}s ${tr('secondsLeft')}`;
+          subtitle = tr('stepNow');
         } else if (previewMode) {
-          subtitle = 'Vista previa';
+          subtitle = tr('previewLabel');
         }
         const exerciseKey = normalizeExerciseName(name);
         row.innerHTML = `<div><strong>${name}</strong><div class="small">${subtitle}</div></div><div><strong>${right}</strong></div>`;

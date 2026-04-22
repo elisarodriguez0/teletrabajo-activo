@@ -10,37 +10,46 @@
 <body>
   <div class="app">
     <section class="hero">
-      <div class="pill-row">
-        <div class="pill">Lunes a viernes</div>
-        <div class="pill">Escritorio elevable</div>
-        <div class="pill">Crono activo</div>
-        <div class="pill">Aleatoriedad útil</div>
+      <div class="hero-top">
+        <div class="lang-switch">
+          <label for="langSelect" id="langLabel">Idioma</label>
+          <select id="langSelect" aria-label="Language selector">
+            <option value="es">Español</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+        <div class="pill-row">
+          <div class="pill" id="pillWeekdays">Lunes a viernes</div>
+          <div class="pill" id="pillDesk">Escritorio elevable</div>
+          <div class="pill" id="pillTimer">Crono activo</div>
+          <div class="pill" id="pillVariety">Aleatoriedad útil</div>
+        </div>
       </div>
-      <h1>Teletrabajo Activo</h1>
-      <p>Versión pensada para ordenador. La enciendes al fichar, dejas la pestaña abierta y te va guiando con bloques de sentada, de pie, movimiento y fuerza extra colocada de forma aleatoria fuera de tus días de gimnasio.</p>
+      <h1 id="heroTitle">Teletrabajo Activo</h1>
+      <p id="heroDesc">Versión pensada para ordenador. La enciendes al fichar, dejas la pestaña abierta y te va guiando con bloques de sentada, de pie, movimiento y fuerza extra colocada de forma aleatoria fuera de tus días de gimnasio.</p>
     </section>
 
     <section class="grid">
       <div class="card" style="grid-column: span 12;">
-        <h2>Estado ahora</h2>
+        <h2 id="stateNowTitle">Estado ahora</h2>
         <div class="status-grid">
           <div class="status-box">
-            <div class="label">Día mostrado</div>
+            <div class="label" id="labelShownDay">Día mostrado</div>
             <div class="value" id="shownDay">Cargando...</div>
             <div class="subvalue" id="shownDaySub">Generando jornada.</div>
           </div>
           <div class="status-box">
-            <div class="label">Fase actual</div>
+            <div class="label" id="labelCurrentPhase">Fase actual</div>
             <div class="value" id="currentPhase">Cargando...</div>
             <div class="subvalue" id="currentDescription">Preparando el día.</div>
           </div>
           <div class="status-box">
-            <div class="label">Cuenta atrás</div>
+            <div class="label" id="labelCountdown">Cuenta atrás</div>
             <div class="value mono" id="timeLeft">00:00</div>
             <div class="subvalue" id="nextPhase">Siguiente bloque: ...</div>
           </div>
           <div class="status-box">
-            <div class="label">Próxima alarma</div>
+            <div class="label" id="labelNextAlarm">Próxima alarma</div>
             <div class="value mono" id="nextAlarm">--:--</div>
             <div class="subvalue" id="alarmDescription">Activa sonido para que avise.</div>
           </div>
@@ -48,7 +57,7 @@
       </div>
 
       <div class="card" style="grid-column: span 7;">
-        <h2>Crono principal</h2>
+        <h2 id="mainTimerTitle">Crono principal</h2>
         <div class="timer-wrap">
           <div class="timer-ring" id="timerRing" style="--progress: 0%;">
             <div class="timer-inner">
@@ -57,7 +66,7 @@
             </div>
           </div>
           <div>
-            <p>Usa esto con la pestaña abierta en el ordenador. Cuando cambie el bloque te sonará una alarma si activas el audio.</p>
+            <p id="mainTimerDesc">Usa esto con la pestaña abierta en el ordenador. Cuando cambie el bloque te sonará una alarma si activas el audio.</p>
             <div class="button-row">
               <button id="soundBtn">Activar sonido</button>
               <button class="secondary" id="notifBtn">Activar notificaciones</button>
@@ -65,45 +74,45 @@
               <button class="secondary" id="todayBtn">Volver a hoy</button>
               <button class="secondary" id="skipBtn">Saltar bloque</button>
             </div>
-            <div class="notice">Pensada para escritorio. Si cambias de pestaña, la app intenta avisarte con sonido, voz, título parpadeando y un pop up de alarma.</div>
+            <div class="notice" id="desktopNotice">Pensada para escritorio. Si cambias de pestaña, la app intenta avisarte con sonido, voz y título parpadeando.</div>
           </div>
         </div>
       </div>
 
       <div class="card" style="grid-column: span 5;">
-        <h2>Semana y ajustes</h2>
+        <h2 id="weekSettingsTitle">Semana y ajustes</h2>
         <div class="weekday-row" id="weekdayButtons"></div>
         <div class="settings" style="margin-top:12px;">
           <div class="field">
-            <label for="startTime">Empiezas</label>
+            <label for="startTime" id="startLabel">Empiezas</label>
             <input id="startTime" type="time" value="08:00" />
           </div>
           <div class="field">
-            <label for="endTime">Terminas</label>
+            <label for="endTime" id="endLabel">Terminas</label>
             <input id="endTime" type="time" value="18:00" />
           </div>
           <div class="field">
-            <label for="lunchStart">Comida</label>
+            <label for="lunchStart" id="lunchLabel">Comida</label>
             <input id="lunchStart" type="time" value="14:00" />
           </div>
           <div class="field">
-            <label for="lunchMinutes">Minutos comida</label>
+            <label for="lunchMinutes" id="lunchMinutesLabel">Minutos comida</label>
             <input id="lunchMinutes" type="number" min="30" max="120" step="5" value="60" />
           </div>
           <div class="field">
-            <label for="sitMinutes">Minutos sentada</label>
+            <label for="sitMinutes" id="sitMinutesLabel">Minutos sentada</label>
             <input id="sitMinutes" type="number" min="20" max="90" step="1" value="45" />
           </div>
           <div class="field">
-            <label for="standMinutes">Minutos de pie</label>
+            <label for="standMinutes" id="standMinutesLabel">Minutos de pie</label>
             <input id="standMinutes" type="number" min="5" max="40" step="1" value="20" />
           </div>
           <div class="field">
-            <label for="moveMinutes">Minutos movilidad</label>
+            <label for="moveMinutes" id="moveMinutesLabel">Minutos movilidad</label>
             <input id="moveMinutes" type="number" min="3" max="20" step="1" value="5" />
           </div>
           <div class="field">
-            <label for="strengthSessions">Fuerza real por semana</label>
+            <label for="strengthSessions" id="strengthPerWeekLabel">Fuerza real por semana</label>
             <select id="strengthSessions">
               <option value="1">1 sesión</option>
               <option value="2" selected>2 sesiones</option>
@@ -119,14 +128,14 @@
             </select>
           </div>
           <div class="field">
-            <label for="allowWalk">Permitir caminata corta</label>
+            <label for="allowWalk" id="allowWalkLabel">Permitir caminata corta</label>
             <select id="allowWalk">
               <option value="no" selected>No</option>
               <option value="yes">Sí</option>
             </select>
           </div>
         </div>
-        <p style="margin-top:12px; font-weight:800; color:var(--text);">Días de gimnasio</p>
+        <p style="margin-top:12px; font-weight:800; color:var(--text);" id="gymDaysLabel">Días de gimnasio</p>
         <div class="fitboxing-row" id="fitboxingDays"></div>
         <div class="button-row">
           <button class="good" id="saveBtn">Guardar y regenerar semana</button>
@@ -134,7 +143,7 @@
       </div>
 
       <div class="card" style="grid-column: span 6;">
-        <h2>Bloque guiado</h2>
+        <h2 id="guidedBlockTitle">Bloque guiado</h2>
         <p id="guidedTitle">Cuando toque movimiento o fuerza, verás aquí cada mini paso con su tiempo.</p>
         <div class="guide-layout">
           <div class="steps" id="guidedSteps"></div>
@@ -142,8 +151,8 @@
       </div>
 
       <div class="card" style="grid-column: span 6;">
-        <h2>Detalle del bloque</h2>
-        <p>Aquí tienes explicado el movimiento o ejercicio que toca en cada momento.</p>
+        <h2 id="blockDetailTitle">Detalle del bloque</h2>
+        <p id="blockDetailDesc">Aquí tienes explicado el movimiento o ejercicio que toca en cada momento.</p>
         <div class="exercise-card" id="exerciseCard">
           <div class="exercise-visual" id="exerciseVisual"></div>
           <div class="exercise-title" id="exerciseName">Esperando bloque guiado</div>
@@ -154,8 +163,8 @@
       </div>
 
       <div class="card" id="todoCard" style="grid-column: span 12;">
-        <h2>To do list</h2>
-        <p>Añade tareas rápidas, reordénalas arrastrando y márcalas al completarlas.</p>
+        <h2 id="todoTitle">To do list</h2>
+        <p id="todoDesc">Añade tareas rápidas, reordénalas arrastrando y márcalas al completarlas.</p>
         <div class="button-row" style="margin-top:0;">
           <button class="secondary todo-compact-toggle" id="todoCompactBtn">Modo compacto lateral</button>
         </div>
@@ -169,7 +178,7 @@
       </div>
 
       <div class="card" id="summaryCard" style="grid-column: span 12;">
-        <h2>Resumen del día mostrado</h2>
+        <h2 id="summaryTitle">Resumen del día mostrado</h2>
         <div class="summary-band">
           <div class="stats" id="stats"></div>
           <div class="notice" id="dayNote" style="margin-top:0; background:#f8fbff; border-color:#d7e7f6; color:#294a67;">
@@ -179,14 +188,14 @@
       </div>
 
       <div class="card" id="planCard" style="grid-column: span 12;">
-        <h2>Plan del día</h2>
+        <h2 id="dayPlanTitle">Plan del día</h2>
         <p id="todayLabel">Cargando plan...</p>
         <div class="timeline" id="timeline"></div>
       </div>
 
       <div class="card" id="strengthCard" style="grid-column: span 12;">
-        <h2>Sesiones de fuerza de la semana</h2>
-        <p>Se colocan fuera de tus días de gimnasio. Si ya tienes gimnasio ese día, la app no te mete fuerza extra ahí.</p>
+        <h2 id="strengthWeekTitle">Sesiones de fuerza de la semana</h2>
+        <p id="strengthWeekDesc">Se colocan fuera de tus días de gimnasio. Si ya tienes gimnasio ese día, la app no te mete fuerza extra ahí.</p>
         <div class="timeline" id="strengthTimeline"></div>
       </div>
     </section>

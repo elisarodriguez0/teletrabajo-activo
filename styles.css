@@ -597,3 +597,6 @@
   background: #18202a;
   transform: rotate(45deg);
 }
+
+
+.hero-top{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.lang-switch{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;background:#fff;border:1px solid var(--line)}.lang-switch label{margin:0;font-size:.9rem;font-weight:700;color:var(--muted)}.lang-switch select{border:1px solid var(--line);border-radius:999px;padding:8px 12px;background:#fff;color:var(--text);font-weight:700}
