@@ -473,11 +473,274 @@ const DAY_NAMES_BY_LANG = { es: ['domingo','lunes','martes','miércoles','jueves
     };
 
     const STRINGS = {
-      es: {langLabel:'Idioma',pillWeekdays:'Lunes a viernes',pillDesk:'Escritorio elevable',pillTimer:'Crono activo',pillVariety:'Aleatoriedad útil',heroTitle:'Teletrabajo Activo',heroDesc:'Versión pensada para ordenador. La enciendes al fichar, dejas la pestaña abierta y te va guiando con bloques de sentada, de pie, movimiento y fuerza extra colocada de forma aleatoria fuera de tus días de gimnasio.',stateNowTitle:'Estado ahora',labelShownDay:'Día mostrado',labelCurrentPhase:'Fase actual',labelCountdown:'Cuenta atrás',labelNextAlarm:'Próxima alarma',mainTimerTitle:'Crono principal',mainTimerDesc:'Usa esto con la pestaña abierta en el ordenador. Cuando cambie el bloque te sonará una alarma si activas el audio.',btnEnableSound:'Activar sonido',btnSoundOn:'Sonido activado',btnEnableNotifications:'Activar notificaciones',btnNotifOn:'Notificaciones activadas',btnNotifBlocked:'Notificaciones bloqueadas',btnGenerate:'Regenerar día mostrado',btnToday:'Volver a hoy',btnSkip:'Saltar bloque',desktopNotice:'Pensada para escritorio. Si cambias de pestaña, la app intenta avisarte con sonido, voz y título parpadeando.',weekSettingsTitle:'Semana y ajustes',startLabel:'Empiezas',endLabel:'Terminas',lunchLabel:'Comida',lunchMinutesLabel:'Minutos comida',sitMinutesLabel:'Minutos sentada',standMinutesLabel:'Minutos de pie',moveMinutesLabel:'Minutos movilidad',strengthPerWeekLabel:'Fuerza real por semana',strengthSessionsOptions:['1 sesión','2 sesiones','3 sesiones'],randomnessLabel:'Variación de ejercicios',randomnessOptions:['Suave','Media','Alta'],randomTooltip:'No cambia la duración de los bloques. Solo cambia el tipo y la variedad de ejercicios.',allowWalkLabel:'Permitir caminata corta',allowWalkOptions:['No','Sí'],gymDaysLabel:'Días de gimnasio',saveBtn:'Guardar y regenerar semana',guidedBlockTitle:'Bloque guiado',blockDetailTitle:'Detalle del bloque',blockDetailDesc:'Aquí tienes explicado el movimiento o ejercicio que toca en cada momento.',todoTitle:'To do list',todoDesc:'Añade tareas rápidas, reordénalas arrastrando y márcalas al completarlas.',todoCompactOff:'Modo compacto lateral',todoCompactOn:'Quitar lateral',todoPlaceholder:'Añade una tarea',todoAddBtn:'Añadir tarea',summaryTitle:'Resumen del día mostrado',dayPlanTitle:'Plan del día',strengthWeekTitle:'Sesiones de fuerza de la semana',strengthWeekDesc:'Se colocan fuera de tus días de gimnasio. Si ya tienes gimnasio ese día, la app no te mete fuerza extra ahí.',soundError:'No pude activar el sonido. Haz clic otra vez.',notifUnsupported:'Este navegador no soporta notificaciones web.',todoEmpty:'Todavía no has añadido tareas.',deleteBtn:'Borrar',preview:'Vista previa',previewDesc:'Estás viendo otro día de la semana. El crono solo corre con el día real.',nextBlock:'Siguiente bloque',beforeStart:'Antes de empezar',outOfHours:'Fuera de horario',waitingDay:'Tu jornada está preparada y esperando.',dayFinished:'Tu jornada ha terminado.',noBlocks:'ninguno',endOfDay:'fin del día',shownDayReal:'Hoy real.',shownDaySelected:'Día de la semana seleccionado.',todayLabelPrefix:'Así queda',noDay:'Sin día',dayError:'No he podido generar el día mostrado.',regenerateHint:'Prueba a regenerar la semana.',strengthTag:'Fuerza',noExtraSession:'Sin sesión extra',gymThatDay:'Ese día ya haces gimnasio.',noStrengthDay:'Día libre de fuerza real.',gymTag:'Gimnasio',freeTag:'Libre',allGymNotice:'Todos tus días entre semana tienen gimnasio marcado. Por eso no he metido fuerza extra.',totalPlanned:'Total planificado',statLabels:['Sentada','De pie','Movimiento','Fuerza'],tabPreview:'Vista previa',tabBefore:'Empieza',tabEnded:'Día terminado',blockStep:'Paso del bloque',stepNow:'Ahora mismo',previewLabel:'Vista previa',secondsLeft:'quedan',noGuidedBlock:'No hay bloque guiado activo ahora mismo.',guidedPreview:'Vista previa del bloque guiado.',standGuided:'Bloque de pie. Mantén pies firmes, reparte peso y relaja hombros.',sitGuided:'Bloque sentada. Pies apoyados, cuello largo y ratón cerca.',lunchGuided:'Comida y descanso.',noStepGuided:'Este bloque no tiene pasos guiados.',standChecklist:['Pies bien apoyados.','Pantalla a buena altura.','Microcambios de peso cada poco.'],sitChecklist:['Pies apoyados.','Ratón y teclado cerca.','No te quedes congelada toda la hora.'],restChecklist:['Descansa y vuelve sin prisa.'],standTip:'Estar de pie inmóvil tampoco es la panacea. Cambia postura.',generalTip:'El objetivo es que el cuerpo no se quede tieso.',speechPrefix:'Cambio de bloque'},
-      en: {langLabel:'Language',pillWeekdays:'Monday to Friday',pillDesk:'Standing desk',pillTimer:'Active timer',pillVariety:'Useful variety',heroTitle:'Active Remote Work',heroDesc:'Desktop version. Start it when you clock in, keep the tab open, and it guides you through sitting, standing, movement, and extra strength blocks outside your gym days.',stateNowTitle:'Current status',labelShownDay:'Shown day',labelCurrentPhase:'Current phase',labelCountdown:'Countdown',labelNextAlarm:'Next alarm',mainTimerTitle:'Main timer',mainTimerDesc:'Use this with the tab open on your computer. When the block changes, you will hear an alarm if audio is enabled.',btnEnableSound:'Enable sound',btnSoundOn:'Sound enabled',btnEnableNotifications:'Enable notifications',btnNotifOn:'Notifications enabled',btnNotifBlocked:'Notifications blocked',btnGenerate:'Regenerate shown day',btnToday:'Back to today',btnSkip:'Skip block',desktopNotice:'Built for desktop. If you switch tabs, the app tries to alert you with sound, voice, and a flashing tab title.',weekSettingsTitle:'Week and settings',startLabel:'Start',endLabel:'End',lunchLabel:'Lunch',lunchMinutesLabel:'Lunch minutes',sitMinutesLabel:'Sitting minutes',standMinutesLabel:'Standing minutes',moveMinutesLabel:'Movement minutes',strengthPerWeekLabel:'Strength sessions per week',strengthSessionsOptions:['1 session','2 sessions','3 sessions'],randomnessLabel:'Exercise variation',randomnessOptions:['Low','Medium','High'],randomTooltip:'This does not change block duration. It only changes the type and variety of exercises.',allowWalkLabel:'Allow short walk',allowWalkOptions:['No','Yes'],gymDaysLabel:'Gym days',saveBtn:'Save and regenerate week',guidedBlockTitle:'Guided block',blockDetailTitle:'Block detail',blockDetailDesc:'This explains the movement or exercise you should do at that moment.',todoTitle:'To do list',todoDesc:'Add quick tasks, drag to reorder them, and tick them off when completed.',todoCompactOff:'Compact side mode',todoCompactOn:'Hide side panel',todoPlaceholder:'Add a task',todoAddBtn:'Add task',summaryTitle:'Shown day summary',dayPlanTitle:'Day plan',strengthWeekTitle:'Weekly strength sessions',strengthWeekDesc:'These are placed outside your gym days. If you already have gym that day, the app does not schedule extra strength there.',soundError:'Could not enable sound. Click again.',notifUnsupported:'This browser does not support web notifications.',todoEmpty:'You have not added any tasks yet.',deleteBtn:'Delete',preview:'Preview',previewDesc:'You are viewing another day of the week. The timer only runs for the real current day.',nextBlock:'Next block',beforeStart:'Before start',outOfHours:'Outside working hours',waitingDay:'Your day is ready and waiting.',dayFinished:'Your day has ended.',noBlocks:'none',endOfDay:'end of day',shownDayReal:'Real today.',shownDaySelected:'Selected weekday.',todayLabelPrefix:'This is',noDay:'No day',dayError:'Could not generate the shown day.',regenerateHint:'Try regenerating the week.',strengthTag:'Strength',noExtraSession:'No extra session',gymThatDay:'You already have gym that day.',noStrengthDay:'No extra strength that day.',gymTag:'Gym',freeTag:'Free',allGymNotice:'All weekdays are marked as gym days, so no extra strength sessions were added.',totalPlanned:'Total planned',statLabels:['Sitting','Standing','Movement','Strength'],tabPreview:'Preview',tabBefore:'Starts',tabEnded:'Day finished',blockStep:'Block step',stepNow:'Right now',previewLabel:'Preview',secondsLeft:'left',noGuidedBlock:'There is no guided block active right now.',guidedPreview:'Guided block preview.',standGuided:'Standing block. Keep your feet grounded, shift your weight, and relax your shoulders.',sitGuided:'Sitting block. Keep feet supported, neck long, and mouse close.',lunchGuided:'Lunch and rest.',noStepGuided:'This block has no guided steps.',standChecklist:['Feet grounded.','Screen at a good height.','Shift your weight every so often.'],sitChecklist:['Feet supported.','Mouse and keyboard close.','Do not stay frozen the whole hour.'],restChecklist:['Rest and come back calmly.'],standTip:'Standing still forever is not the answer either. Change posture.',generalTip:'The goal is to stop your body from getting stiff.',speechPrefix:'Block change'}
+      es: {langLabel:'Idioma',pillWeekdays:'Lunes a viernes',pillDesk:'Escritorio elevable',pillTimer:'Crono activo',pillVariety:'Aleatoriedad útil',heroTitle:'Teletrabajo Activo',heroDesc:'Versión pensada para ordenador. La enciendes al fichar, dejas la pestaña abierta y te va guiando con bloques de sentada, de pie, movimiento y fuerza extra colocada de forma aleatoria fuera de tus días de gimnasio.',stateNowTitle:'Estado ahora',labelShownDay:'Día mostrado',labelCurrentPhase:'Fase actual',labelCountdown:'Cuenta atrás',labelNextAlarm:'Próxima alarma',mainTimerTitle:'Crono principal',mainTimerDesc:'Usa esto con la pestaña abierta en el ordenador. Cuando cambie el bloque te sonará una alarma si activas el audio.',btnEnableSound:'Activar sonido',btnSoundOn:'Sonido activado',btnEnableNotifications:'Activar notificaciones',btnNotifOn:'Notificaciones activadas',btnNotifBlocked:'Notificaciones bloqueadas',btnGenerate:'Regenerar día mostrado',btnToday:'Volver a hoy',btnSkip:'Saltar bloque',desktopNotice:'Pensada para escritorio. Si cambias de pestaña, la app intenta avisarte con sonido, voz y título parpadeando.',weekSettingsTitle:'Semana y ajustes',startLabel:'Empiezas',endLabel:'Terminas',lunchLabel:'Comida',lunchMinutesLabel:'Minutos comida',sitMinutesLabel:'Minutos sentada',standMinutesLabel:'Minutos de pie',moveMinutesLabel:'Minutos movilidad',strengthPerWeekLabel:'Fuerza real por semana',strengthSessionsOptions:['1 sesión','2 sesiones','3 sesiones'],randomnessLabel:'Variación de ejercicios',randomnessOptions:['Suave','Media','Alta'],randomTooltip:'No cambia la duración de los bloques. Solo cambia el tipo y la variedad de ejercicios.',allowWalkLabel:'Permitir caminata corta',allowWalkOptions:['No','Sí'],gymDaysLabel:'Días de gimnasio',saveBtn:'Guardar y regenerar semana',guidedBlockTitle:'Bloque guiado',blockDetailTitle:'Detalle del bloque',blockDetailDesc:'Aquí tienes explicado el movimiento o ejercicio que toca en cada momento.',todoTitle:'To do list',todoDesc:'Añade tareas rápidas, reordénalas arrastrando y márcalas al completarlas.',todoCompactOff:'Modo compacto lateral',todoCompactOn:'Quitar lateral',todoPlaceholder:'Añade una tarea',todoAddBtn:'Añadir tarea',summaryTitle:'Resumen del día mostrado',dayPlanTitle:'Plan del día',strengthWeekTitle:'Sesiones de fuerza de la semana',strengthWeekDesc:'Se colocan fuera de tus días de gimnasio. Si ya tienes gimnasio ese día, la app no te mete fuerza extra ahí.',soundError:'No pude activar el sonido. Haz clic otra vez.',notifUnsupported:'Este navegador no soporta notificaciones web.',todoEmpty:'Todavía no has añadido tareas.',deleteBtn:'Borrar',preview:'Vista previa',previewDesc:'Estás viendo otro día de la semana. El crono solo corre con el día real.',nextBlock:'Siguiente bloque',beforeStart:'Antes de empezar',outOfHours:'Fuera de horario',waitingDay:'Tu jornada está preparada y esperando.',dayFinished:'Tu jornada ha terminado.',noBlocks:'ninguno',endOfDay:'fin del día',shownDayReal:'Hoy real.',shownDaySelected:'Día de la semana seleccionado.',todayLabelPrefix:'Así queda',noDay:'Sin día',dayError:'No he podido generar el día mostrado.',regenerateHint:'Prueba a regenerar la semana.',strengthTag:'Fuerza',noExtraSession:'Sin sesión extra',gymThatDay:'Ese día ya haces gimnasio.',noStrengthDay:'Día libre de fuerza real.',gymTag:'Gimnasio',freeTag:'Libre',allGymNotice:'Todos tus días entre semana tienen gimnasio marcado. Por eso no he metido fuerza extra.',totalPlanned:'Total planificado',statLabels:['Sentada','De pie','Movimiento','Fuerza'],tabPreview:'Vista previa',tabBefore:'Empieza',tabEnded:'Día terminado',blockStep:'Paso del bloque',stepNow:'Ahora mismo',previewLabel:'Vista previa',secondsLeft:'quedan',noGuidedBlock:'No hay bloque guiado activo ahora mismo.',guidedPreview:'Vista previa del bloque guiado.',standGuided:'Bloque de pie. Mantén pies firmes, reparte peso y relaja hombros.',sitGuided:'Bloque sentada. Pies apoyados, cuello largo y ratón cerca.',lunchGuided:'Comida y descanso.',noStepGuided:'Este bloque no tiene pasos guiados.',standChecklist:['Pies bien apoyados.','Pantalla a buena altura.','Microcambios de peso cada poco.'],sitChecklist:['Pies apoyados.','Ratón y teclado cerca.','No te quedes congelada toda la hora.'],restChecklist:['Descansa y vuelve sin prisa.'],standTip:'Estar de pie inmóvil tampoco es la panacea. Cambia postura.',generalTip:'El objetivo es que el cuerpo no se quede tieso.',speechPrefix:'Cambio de bloque',loadingDay:'Cargando...',generatingDay:'Generando jornada.',timerBefore:'Esperando inicio'},
+      en: {langLabel:'Language',pillWeekdays:'Monday to Friday',pillDesk:'Standing desk',pillTimer:'Active timer',pillVariety:'Useful variety',heroTitle:'Active Remote Work',heroDesc:'Desktop version. Start it when you clock in, keep the tab open, and it guides you through sitting, standing, movement, and extra strength blocks outside your gym days.',stateNowTitle:'Current status',labelShownDay:'Shown day',labelCurrentPhase:'Current phase',labelCountdown:'Countdown',labelNextAlarm:'Next alarm',mainTimerTitle:'Main timer',mainTimerDesc:'Use this with the tab open on your computer. When the block changes, you will hear an alarm if audio is enabled.',btnEnableSound:'Enable sound',btnSoundOn:'Sound enabled',btnEnableNotifications:'Enable notifications',btnNotifOn:'Notifications enabled',btnNotifBlocked:'Notifications blocked',btnGenerate:'Regenerate shown day',btnToday:'Back to today',btnSkip:'Skip block',desktopNotice:'Built for desktop. If you switch tabs, the app tries to alert you with sound, voice, and a flashing tab title.',weekSettingsTitle:'Week and settings',startLabel:'Start',endLabel:'End',lunchLabel:'Lunch',lunchMinutesLabel:'Lunch minutes',sitMinutesLabel:'Sitting minutes',standMinutesLabel:'Standing minutes',moveMinutesLabel:'Movement minutes',strengthPerWeekLabel:'Strength sessions per week',strengthSessionsOptions:['1 session','2 sessions','3 sessions'],randomnessLabel:'Exercise variation',randomnessOptions:['Low','Medium','High'],randomTooltip:'This does not change block duration. It only changes the type and variety of exercises.',allowWalkLabel:'Allow short walk',allowWalkOptions:['No','Yes'],gymDaysLabel:'Gym days',saveBtn:'Save and regenerate week',guidedBlockTitle:'Guided block',blockDetailTitle:'Block detail',blockDetailDesc:'This explains the movement or exercise you should do at that moment.',todoTitle:'To do list',todoDesc:'Add quick tasks, drag to reorder them, and tick them off when completed.',todoCompactOff:'Compact side mode',todoCompactOn:'Hide side panel',todoPlaceholder:'Add a task',todoAddBtn:'Add task',summaryTitle:'Shown day summary',dayPlanTitle:'Day plan',strengthWeekTitle:'Weekly strength sessions',strengthWeekDesc:'These are placed outside your gym days. If you already have gym that day, the app does not schedule extra strength there.',soundError:'Could not enable sound. Click again.',notifUnsupported:'This browser does not support web notifications.',todoEmpty:'You have not added any tasks yet.',deleteBtn:'Delete',preview:'Preview',previewDesc:'You are viewing another day of the week. The timer only runs for the real current day.',nextBlock:'Next block',beforeStart:'Before start',outOfHours:'Outside working hours',waitingDay:'Your day is ready and waiting.',dayFinished:'Your day has ended.',noBlocks:'none',endOfDay:'end of day',shownDayReal:'Real today.',shownDaySelected:'Selected weekday.',todayLabelPrefix:'This is',noDay:'No day',dayError:'Could not generate the shown day.',regenerateHint:'Try regenerating the week.',strengthTag:'Strength',noExtraSession:'No extra session',gymThatDay:'You already have gym that day.',noStrengthDay:'No extra strength that day.',gymTag:'Gym',freeTag:'Free',allGymNotice:'All weekdays are marked as gym days, so no extra strength sessions were added.',totalPlanned:'Total planned',statLabels:['Sitting','Standing','Movement','Strength'],tabPreview:'Preview',tabBefore:'Starts',tabEnded:'Day finished',blockStep:'Block step',stepNow:'Right now',previewLabel:'Preview',secondsLeft:'left',noGuidedBlock:'There is no guided block active right now.',guidedPreview:'Guided block preview.',standGuided:'Standing block. Keep your feet grounded, shift your weight, and relax your shoulders.',sitGuided:'Sitting block. Keep feet supported, neck long, and mouse close.',lunchGuided:'Lunch and rest.',noStepGuided:'This block has no guided steps.',standChecklist:['Feet grounded.','Screen at a good height.','Shift your weight every so often.'],sitChecklist:['Feet supported.','Mouse and keyboard close.','Do not stay frozen the whole hour.'],restChecklist:['Rest and come back calmly.'],standTip:'Standing still forever is not the answer either. Change posture.',generalTip:'The goal is to stop your body from getting stiff.',speechPrefix:'Block change',loadingDay:'Loading...',generatingDay:'Generating day.',timerBefore:'Waiting to start'}
     };
 
-    const defaults = {
+    
+    const TEXT_MAP_EN = {
+      'Sentada': 'Sitting',
+      'De pie': 'Standing',
+      'Movimiento': 'Movement',
+      'Comida': 'Lunch',
+      'Fuerza': 'Strength',
+      'Trabajo sentada': 'Sitting work',
+      'Trabajo de pie': 'Standing work',
+      'Bloque de foco. Cambia postura al terminar.': 'Focus block. Change posture when it ends.',
+      'Sube el escritorio, apoya bien los pies y relaja hombros.': 'Raise the desk, keep your feet grounded, and relax your shoulders.',
+      'Bloque corto para movilidad y activación.': 'Short block for mobility and activation.',
+      'Comida y descanso. No hace falta forzar paseo aquí.': 'Lunch and rest. No need to force a walk here.',
+      'Piernas + pecho': 'Legs + chest',
+      'Movilidad + empuje': 'Mobility + push',
+      'Cadera + postura': 'Hips + posture',
+      'Desentumecer total': 'Full reset',
+      'Caminata corta + movilidad': 'Short walk + mobility',
+      'Paseo corto, sentadilla y apertura de pecho.': 'Short walk, squats, and chest opening.',
+      'Activación de piernas y empuje suave.': 'Leg activation and gentle pushing.',
+      'Bisagra, gluteo y espalda alta.': 'Hip hinge, glutes, and upper back.',
+      'Bisagra, glúteo y espalda alta.': 'Hip hinge, glutes, and upper back.',
+      'Bloque fácil para cuando vas cargada.': 'Easy block for when you feel stiff.',
+      'Una caminata breve y luego movilidad suave para reiniciar el cuerpo.': 'A short walk followed by gentle mobility to reset your body.',
+      'Full body base': 'Full body base',
+      'Pierna + core': 'Legs + core',
+      'Postura + empuje': 'Posture + push',
+      'Dos rondas sencillas pero útiles.': 'Two simple but useful rounds.',
+      'Más estable y muy compatible con gimnasio.': 'More stable and very compatible with gym days.',
+      'Muy buena si notas cuello y espalda cargados.': 'Very good if your neck and upper back feel tight.',
+      'Camina por casa': 'Walk around the house',
+      'Camina rápido': 'Walk fast',
+      'Camina': 'Walk',
+      'Sentadillas': 'Squats',
+      'Sentadillas o levantarte de la silla': 'Squats or sit-to-stand',
+      'Sentadilla corta o media sentadilla': 'Short squat or half squat',
+      'Sentadilla con pausa abajo': 'Pause squat',
+      'Zancadas atrás alternas': 'Alternating reverse lunges',
+      'Zancadas atrás': 'Reverse lunges',
+      'Flexiones en escritorio': 'Desk push-ups',
+      'Flexiones en escritorio o pared': 'Desk or wall push-ups',
+      'Wall slides': 'Wall slides',
+      'Wall slides o retracciones escapulares': 'Wall slides or scapular retractions',
+      'Retracciones escapulares': 'Scapular retractions',
+      'Abrir pecho y hombros atrás': 'Open chest and roll shoulders back',
+      'Apertura de pecho': 'Chest opening',
+      'Cuello y hombros': 'Neck and shoulders',
+      'Bisagra de cadera': 'Hip hinge',
+      'Aprieta glúteos de pie': 'Standing glute squeeze',
+      'Gemelos con pausa arriba': 'Calf raises with pause',
+      'Elevaciones de gemelos': 'Calf raises',
+      'Balanceo de tobillos': 'Ankle mobility',
+      'Giro torácico suave': 'Gentle thoracic rotation',
+      'Respira y sacude piernas': 'Breathe and shake out your legs',
+      'Puente de glúteo': 'Glute bridge',
+      'Wall sit': 'Wall sit',
+      'Dead bug': 'Dead bug',
+      'Plancha': 'Plank',
+      'Plancha lateral lado A': 'Side plank side A',
+      'Plancha lateral lado B': 'Side plank side B',
+      'Descanso': 'Rest',
+
+      'Camina a paso ligero por el pasillo o la habitación. Nada épico, solo sacar al cuerpo del modo estatua.': 'Walk briskly around the room or hallway. Nothing dramatic, just get your body out of statue mode.',
+      'Da zancadas cortas y rápidas, sin arrastrar los pies.': 'Take short, quick steps without dragging your feet.',
+      'Mueve los brazos de forma natural.': 'Move your arms naturally.',
+      'Mantén el pecho abierto y la mirada al frente.': 'Keep your chest open and your gaze forward.',
+      'Objetivo real: subir un poco pulsaciones y despegar cadera, tobillos y espalda.': 'Real goal: raise your heart rate a little and loosen up your hips, ankles, and back.',
+      'Mismo gesto que caminar normal, pero con intención. Piensa en paso vivo de “voy tarde”.': 'Same movement as normal walking, but with intention. Think of a brisk “I am late” pace.',
+      'Aprieta un poco el abdomen para no ir colapsada.': 'Brace your core slightly so you do not collapse.',
+      'Apoya el pie de forma natural y continua.': 'Place your foot naturally and keep moving smoothly.',
+      'No hace falta correr ni botar.': 'No need to run or bounce.',
+      'Si tienes poco espacio, haz idas y vueltas. Sirve igual.': 'If you have little space, walk back and forth. It works just as well.',
+      'Paseo breve para romper la inmovilidad y volver a arrancar tobillos, rodillas y cadera.': 'A short walk to break immobility and wake up ankles, knees, and hips again.',
+      'Da vueltas por casa sin mirar el móvil.': 'Walk around without looking at your phone.',
+      'Respira normal y deja que se suelten los hombros.': 'Breathe normally and let your shoulders loosen up.',
+      'Piensa en moverte, no en hacerlo perfecto.': 'Think about moving, not about doing it perfectly.',
+      'Esto parece una tontería, pero justo esta tontería es la que más evita estar tiesa horas.': 'It may seem silly, but this is exactly the kind of thing that prevents you from getting stiff for hours.',
+      'Baja como si fueras a sentarte en una silla y vuelve a subir apretando glúteos.': 'Lower yourself as if you were going to sit in a chair, then stand back up squeezing your glutes.',
+      'Pies al ancho de caderas o un poco más.': 'Feet hip-width apart or slightly wider.',
+      'Cadera va atrás y abajo, pecho abierto.': 'Send your hips back and down, keeping your chest open.',
+      'Sube empujando el suelo con todo el pie.': 'Stand up by pushing through your whole foot.',
+      'Si te cuesta, toca una silla con el culo y vuelve a subir. Eso cuenta perfectamente.': 'If it is hard, tap a chair with your hips and stand back up. That absolutely counts.',
+      'Versión amable de sentadilla. Te sientas y te levantas de forma controlada.': 'Gentler squat version. Sit down and stand up in a controlled way.',
+      'Acércate al borde de la silla.': 'Move toward the edge of the chair.',
+      'Inclina un poco el torso y empuja con los pies.': 'Lean your torso slightly forward and push through your feet.',
+      'Sube sin tirarte hacia delante de golpe.': 'Stand up without throwing yourself forward.',
+      'Muy buena si no controlas aún la sentadilla libre.': 'Very good if you do not yet feel comfortable with a free squat.',
+      'No hace falta bajar mucho. Solo flexiona cadera y rodillas un poco y vuelve arriba.': 'No need to go very low. Just bend your hips and knees a little and come back up.',
+      'Baja hasta donde te notes estable.': 'Go down only as far as you still feel stable.',
+      'Peso repartido entre talón y parte media del pie.': 'Keep your weight between your heel and midfoot.',
+      'Sube controlando, sin rebote.': 'Stand back up with control, without bouncing.',
+      'Perfecta cuando estás cargada o llevas falda/ropa incómoda.': 'Perfect when you feel stiff or are wearing uncomfortable clothes.',
+      'Igual que la sentadilla, pero paras un momento abajo para que trabaje más.': 'Same as a squat, but pause briefly at the bottom so it works more.',
+      'Quédate 1 o 2 segundos abajo sin hundirte.': 'Stay 1 or 2 seconds at the bottom without collapsing.',
+      'Sube empujando el suelo.': 'Stand up by pushing through the floor.',
+      'Vas a notar más cuádriceps y glúteo sin necesitar peso.': 'You will feel more quads and glutes without needing weights.',
+      'Lleva una pierna atrás, baja un poco y vuelve. Alterna lados.': 'Step one leg back, lower slightly, and return. Alternate sides.',
+      'Paso atrás lo bastante largo para ir estable.': 'Step back far enough to stay stable.',
+      'Torso alto, hombros relajados.': 'Keep your torso tall and shoulders relaxed.',
+      'Empuja con la pierna de delante para volver.': 'Push through the front leg to come back up.',
+      'Si te tambaleas, apóyate con una mano en la mesa o la pared.': 'If you wobble, support yourself with one hand on the desk or wall.',
+      'Unilateral, muy útil para piernas y glúteo sin necesitar mucho espacio.': 'A unilateral exercise that is very useful for legs and glutes without needing much space.',
+      'Rodilla delantera sigue la línea de los dedos del pie.': 'Keep your front knee tracking in line with your toes.',
+      'No hace falta bajar muchísimo.': 'No need to go super low.',
+      'Vuelve al centro antes de cambiar de lado.': 'Return to the centre before switching sides.',
+      'Mejor pocas bien hechas que muchas descontroladas.': 'A few well done reps are better than many sloppy ones.',
+      'Flexión en escritorio': 'Desk push-up',
+      'Apoya las manos en el borde del escritorio, cuerpo recto, baja pecho y empuja.': 'Place your hands on the desk edge, keep your body straight, lower your chest, and push back up.',
+      'Manos algo más abiertas que hombros.': 'Hands slightly wider than shoulder width.',
+      'Cuerpo en línea, sin sacar culo ni hundir lumbar.': 'Keep your body in one line, without sticking your hips out or collapsing your lower back.',
+      'Baja hacia el borde del escritorio y vuelve a empujar.': 'Lower toward the desk edge and push back up.',
+      'Cuanto más alto el apoyo, más fácil. Escritorio o pared si hace falta.': 'The higher the support, the easier it is. Use the desk or the wall if needed.',
+      'La misma idea de una flexión, pero con apoyo alto para que sea mucho más llevadera.': 'The same idea as a push-up, but with a high support so it feels much easier.',
+      'Aprieta abdomen y glúteos.': 'Brace your core and glutes.',
+      'Codos van en diagonal, no pegados ni abiertos del todo.': 'Let your elbows move diagonally, neither tucked nor fully flared.',
+      'Empuja hasta estirar brazos sin bloquearte.': 'Push until your arms are straight without locking out hard.',
+      'Esto trabaja pecho, hombro y tríceps. Bastante más útil de lo que parece.': 'This works chest, shoulders, and triceps. More useful than it looks.',
+      'Espalda y brazos contra la pared, desliza los antebrazos hacia arriba y abajo.': 'With your back and arms against the wall, slide your forearms up and down.',
+      'Mantén costillas controladas, no arquees la espalda.': 'Keep your ribs under control and do not arch your back.',
+      'Sube solo hasta donde no pierdas contacto útil.': 'Only raise your arms as high as you can without losing good contact.',
+      'Hazlo lento, buscando movilidad y control.': 'Do it slowly, focusing on mobility and control.',
+      'Muy bueno para hombros cerrados por teclado y ratón.': 'Very good for shoulders that feel closed from keyboard and mouse work.',
+      'Si haces wall slides, desliza en pared. Si no, junta escápulas detrás sin encoger hombros.': 'If you do wall slides, slide against the wall. Otherwise, squeeze your shoulder blades together without shrugging.',
+      'Piensa en llevar hombros atrás y abajo.': 'Think about taking your shoulders back and down.',
+      'No saques pecho exagerado ni arquees lumbar.': 'Do not over-flare your chest or arch your lower back.',
+      'Haz una pausa breve al final del gesto.': 'Pause briefly at the end of the movement.',
+      'Esto va genial si se te carga la zona entre cuello y omóplatos.': 'This is great if the area between your neck and shoulder blades feels tight.',
+      'Junta los omóplatos detrás como si quisieras sujetar un lápiz entre ellos.': 'Squeeze your shoulder blades together as if you were holding a pencil between them.',
+      'Brazos sueltos a los lados o codos a 90 grados.': 'Keep your arms relaxed by your sides or your elbows at 90 degrees.',
+      'No subas los hombros hacia las orejas.': 'Do not lift your shoulders toward your ears.',
+      'Aguanta 1 segundo y suelta.': 'Hold for 1 second and release.',
+      'Pequeño gesto, mucha utilidad para postura.': 'Small movement, very useful for posture.',
+      'Abre clavículas, lleva hombros atrás y nota cómo se estira la parte delantera del torso.': 'Open your collarbones, take your shoulders back, and feel the front of your torso stretch.',
+      'Entrelaza manos detrás o simplemente abre brazos.': 'Interlace your hands behind you or simply open your arms.',
+      'Mentón suave, sin sacar cuello.': 'Keep your chin soft and avoid jutting your neck forward.',
+      'Respira profundo 2 o 3 veces.': 'Take 2 or 3 deep breaths.',
+      'Esto es para compensar postura encogida de ordenador.': 'This helps compensate for a hunched computer posture.',
+      'Versión simple para soltar hombros y pectoral.': 'Simple version to release shoulders and chest.',
+      'Abre brazos o lleva manos detrás.': 'Open your arms or bring your hands behind you.',
+      'Costillas tranquilas, no arquees toda la espalda.': 'Keep your ribs quiet and do not arch your whole back.',
+      'Tiene que sentirse liberador, no doloroso.': 'It should feel relieving, not painful.',
+      'Movilidad suave para quitar rigidez de pantalla.': 'Gentle mobility to reduce screen-related stiffness.',
+      'Inclina la cabeza a un lado sin forzar.': 'Tilt your head to one side without forcing it.',
+      'Haz círculos pequeños de hombros hacia atrás.': 'Make small backward shoulder circles.',
+      'Respira y no hagas rebotes.': 'Breathe and do not bounce.',
+      'Aquí no hay heroicidades. Suave y limpio.': 'No heroics here. Gentle and clean.',
+      'Empuja la cadera hacia atrás con espalda neutra, como si cerraras un cajón con el culo.': 'Push your hips back with a neutral spine, as if you were closing a drawer with your hips.',
+      'Rodillas algo flexionadas.': 'Keep your knees slightly bent.',
+      'Espalda larga, no redondees lumbar.': 'Keep your spine long and do not round your lower back.',
+      'Vuelve apretando glúteos al final.': 'Come back up by squeezing your glutes at the top.',
+      'Esto enseña a usar glúteos e isquios en vez de cargarte la espalda.': 'This teaches you to use your glutes and hamstrings instead of loading your back.',
+      'Ponte alta, aprieta glúteos fuerte unos segundos y suelta.': 'Stand tall, squeeze your glutes hard for a few seconds, then release.',
+      'No arquees la espalda.': 'Do not arch your back.',
+      'Aprieta de verdad, como si quisieras juntar los bolsillos del pantalón.': 'Squeeze for real, as if you wanted to bring your back pockets together.',
+      'Muy simple, pero útil para despertar glúteos dormidos por estar sentada.': 'Very simple, but useful for waking up glutes that have gone to sleep from sitting.',
+      'Sube a puntillas, aguanta arriba un momento y baja lento.': 'Rise onto your toes, hold briefly at the top, and lower slowly.',
+      'Empuja desde la base del dedo gordo y segundo dedo.': 'Push from the base of your big toe and second toe.',
+      'Mantente alta 1 o 2 segundos arriba.': 'Stay tall for 1 or 2 seconds at the top.',
+      'Baja controlando, no te dejes caer.': 'Lower with control, do not drop down.',
+      'Esto trabaja gemelos y tobillo. No sustituye a una sentadilla.': 'This works calves and ankles. It does not replace a squat.',
+      'Sube a puntillas y baja. Simple y efectivo para pantorrilla y tobillo.': 'Rise onto your toes and lower down. Simple and effective for calves and ankles.',
+      'Apóyate si hace falta para equilibrarte.': 'Hold on if needed to help your balance.',
+      'Sube todo lo que puedas sin colapsar tobillo.': 'Rise as high as you can without collapsing your ankle.',
+      'Muy buen complemento, pero no reemplaza trabajo completo de pierna.': 'A very good complement, but it does not replace full leg work.',
+      'Movilidad de tobillos': 'Ankle mobility',
+      'Mueve tobillos hacia delante y atrás o haz pequeños círculos controlados.': 'Move your ankles forward and back or make small controlled circles.',
+      'Levanta un pie o apóyate en pared.': 'Lift one foot or support yourself on a wall.',
+      'Haz el gesto suave, sin dolor.': 'Move gently, without pain.',
+      'Cambia de lado a mitad de tiempo.': 'Switch sides halfway through.',
+      'Ideal si notas las piernas acartonadas por estar quieta.': 'Great if your legs feel stiff from staying still.',
+      'Rota la parte alta de la espalda con los brazos relajados o cruzados.': 'Rotate your upper back with your arms relaxed or crossed.',
+      'La pelvis se queda bastante quieta.': 'Keep your pelvis fairly still.',
+      'Gira desde costillas y espalda alta.': 'Rotate from your ribs and upper back.',
+      'Sirve para desbloquear la sensación de ir encorvada.': 'This helps unlock that hunched-over feeling.',
+      'Minipausa para bajar tensión y aflojar piernas.': 'Mini pause to lower tension and loosen your legs.',
+      'Suelta una pierna y luego la otra.': 'Relax one leg and then the other.',
+      'Haz 2 o 3 respiraciones más largas.': 'Take 2 or 3 longer breaths.',
+      'Aprovecha para recolocarte antes de volver al trabajo.': 'Use this moment to reset yourself before going back to work.',
+      'No parece ejercicio, pero ayuda un montón a no acumular rigidez.': 'It may not seem like exercise, but it really helps prevent stiffness from building up.',
+      'Tumbada boca arriba, pies apoyados, elevas cadera apretando glúteos.': 'Lie on your back with feet supported, then lift your hips by squeezing your glutes.',
+      'Talones relativamente cerca del culo.': 'Keep your heels relatively close to your glutes.',
+      'Sube hasta formar una línea hombros-cadera-rodillas.': 'Lift until you form a line from shoulders to hips to knees.',
+      'Baja controlando sin desplomarte.': 'Lower with control without collapsing.',
+      'Muy bueno para glúteo y para compensar tantas horas sentada.': 'Very good for glutes and for compensating so many hours of sitting.',
+      'Espalda apoyada en la pared y te dejas caer hasta una media sentadilla isométrica.': 'With your back against the wall, slide down into a half squat hold.',
+      'Pies algo adelantados respecto a la pared.': 'Keep your feet slightly forward from the wall.',
+      'Rodillas y caderas flexionadas lo que toleres.': 'Bend your knees and hips as much as you comfortably can.',
+      'Mantén abdomen activo y respira.': 'Keep your core active and breathe.',
+      'Quema bastante en poco tiempo. Normal.': 'This burns quite a lot in little time. Totally normal.',
+      'Boca arriba, abdomen apretado, alternas brazo y pierna contrarios sin despegar la zona lumbar.': 'On your back with your core braced, alternate opposite arm and leg without lifting your lower back.',
+      'Espalda baja pegada al suelo o casi.': 'Keep your lower back pressed into the floor, or almost.',
+      'Mueve lento, sin perder control.': 'Move slowly without losing control.',
+      'Muy bueno para core si la plancha te carga demasiado cuello.': 'Very good for core work if planks load your neck too much.',
+      'Apoyo en antebrazos o manos con el cuerpo recto como una tabla.': 'Support yourself on your forearms or hands with your body straight like a plank.',
+      'No hundas lumbar ni saques demasiado el culo.': 'Do not let your lower back sag or lift your hips too much.',
+      'Mira al suelo para mantener cuello largo.': 'Look at the floor to keep your neck long.',
+      'Menos segundos bien hechos vale más que aguantar fatal.': 'Fewer good seconds are worth more than holding badly for longer.',
+      'Apoyo lateral en antebrazo o mano, elevando cadera.': 'Side support on forearm or hand while lifting your hips.',
+      'Hombro encima del codo si vas con antebrazo.': 'Keep your shoulder above your elbow if using your forearm.',
+      'Cadera alta, no te hundas.': 'Keep your hips high and do not sink.',
+      'Haz un lado y luego el otro.': 'Do one side and then the other.',
+      'Trabaja oblicuos y estabilidad.': 'This works your obliques and stability.',
+      'Mismo gesto que el otro lado.': 'Same movement on the other side.',
+      'Mantén el cuello largo.': 'Keep your neck long.',
+      'Empuja el suelo con el antebrazo.': 'Push the floor away with your forearm.',
+      'Aguanta con tensión, no con dolor.': 'Hold with tension, not with pain.',
+      'Normal que un lado te cueste más.': 'It is normal for one side to feel harder.',
+      'Pausa corta para respirar y recolocarte antes del siguiente ejercicio.': 'Short pause to breathe and reset before the next exercise.',
+      'Camina unos pasos o sacude brazos.': 'Walk a few steps or shake out your arms.',
+      'Respira por nariz si puedes.': 'Breathe through your nose if you can.',
+      'Prepárate para el siguiente paso.': 'Get ready for the next step.',
+      'Descansar también forma parte del bloque.': 'Resting is also part of the block.',
+      'Sigue el temporizador y muévete con control. Si un gesto te molesta, recorta rango o cambia a una versión más fácil.': 'Follow the timer and move with control. If something bothers you, reduce the range or switch to an easier version.',
+      'Muévete sin dolor agudo.': 'Move without sharp pain.',
+      'Respira y no corras.': 'Breathe and do not rush.',
+      'Prioriza control sobre cantidad.': 'Prioritise control over quantity.',
+      'El objetivo aquí no es sufrir. Es meter movimiento útil.': 'The goal here is not to suffer. It is to add useful movement.',
+      'Aquí verás explicado el paso principal del bloque.': 'Here you will see the main step of the block explained.',
+      'Cuando llegue un bloque de movimiento o fuerza, te explico qué hacer aquí.': 'When a movement or strength block starts, this panel explains what to do here.',
+      'Mira el temporizador.': 'Check the timer.',
+      'Sigue el paso activo.': 'Follow the active step.',
+      'Vuelve al trabajo cuando toque.': 'Go back to work when it is time.',
+      'Todo está pensado para que no tengas que improvisar.': 'Everything is designed so you do not have to improvise.',
+      'Hazlo suave y con control.': 'Do it gently and with control.'
+    };
+
+    function translateText(text) {
+      if (currentLanguage !== 'en') return text;
+      return TEXT_MAP_EN[text] || text;
+    }
+
+    function translateChecklist(items) {
+      return (items || []).map(item => translateText(item));
+    }
+
+    function translateInfo(info) {
+      if (!info || currentLanguage !== 'en') return info;
+      return {
+        ...info,
+        name: translateText(info.name),
+        summary: translateText(info.summary),
+        checklist: translateChecklist(info.checklist),
+        tip: translateText(info.tip)
+      };
+    }
+
+    function translateEvent(event) {
+      if (!event || currentLanguage !== 'en') return event;
+      const translated = { ...event, title: translateText(event.title), description: translateText(event.description) };
+      if (event.routine) {
+        translated.routine = {
+          ...event.routine,
+          name: translateText(event.routine.name),
+          description: translateText(event.routine.description),
+          steps: (event.routine.steps || []).map(([name, seconds]) => [translateText(name), seconds])
+        };
+      }
+      return translated;
+    }
+
+    function workTagLabel(type) {
+      return translateText(WORK_TAGS[type].label);
+    }
+const defaults = {
       startTime: '08:00',
       endTime: '18:00',
       lunchStart: '14:00',
@@ -564,7 +827,13 @@ const DAY_NAMES_BY_LANG = { es: ['domingo','lunes','martes','miércoles','jueves
     function dayNames() { return DAY_NAMES_BY_LANG[currentLanguage] || DAY_NAMES_BY_LANG.es; }
     function shortDayNames() { return SHORT_DAY_BY_LANG[currentLanguage] || SHORT_DAY_BY_LANG.es; }
     function setText(id, value) { const el = document.getElementById(id); if (el) el.textContent = value; }
-    function applyLanguage() { document.documentElement.lang = currentLanguage; if (els.langSelect) els.langSelect.value = currentLanguage; ['langLabel','pillWeekdays','pillDesk','pillTimer','pillVariety','heroTitle','heroDesc','stateNowTitle','labelShownDay','labelCurrentPhase','labelCountdown','labelNextAlarm','mainTimerTitle','mainTimerDesc','desktopNotice','weekSettingsTitle','startLabel','endLabel','lunchLabel','lunchMinutesLabel','sitMinutesLabel','standMinutesLabel','moveMinutesLabel','strengthPerWeekLabel','gymDaysLabel','guidedBlockTitle','blockDetailTitle','blockDetailDesc','todoTitle','todoDesc','summaryTitle','dayPlanTitle','strengthWeekTitle','strengthWeekDesc'].forEach(id=>setText(id, tr(id))); if (els.soundBtn) els.soundBtn.textContent = soundEnabled ? tr('btnSoundOn') : tr('btnEnableSound'); if (els.notifBtn) els.notifBtn.textContent = notificationsEnabled ? tr('btnNotifOn') : tr('btnEnableNotifications'); if (els.generateBtn) els.generateBtn.textContent = tr('btnGenerate'); if (els.todayBtn) els.todayBtn.textContent = tr('btnToday'); if (els.skipBtn) els.skipBtn.textContent = tr('btnSkip'); if (els.saveBtn) els.saveBtn.textContent = tr('saveBtn'); if (els.todoCompactBtn) els.todoCompactBtn.textContent = todoCompact ? tr('todoCompactOn') : tr('todoCompactOff'); if (els.todoAddBtn) els.todoAddBtn.textContent = tr('todoAddBtn'); if (els.todoInput) els.todoInput.placeholder = tr('todoPlaceholder'); const rl=document.getElementById('randomnessLabel'); if (rl && rl.firstChild) rl.firstChild.textContent = tr('randomnessLabel') + ' '; const rb=document.getElementById('randomTooltipBtn'); if (rb) { rb.title = tr('randomTooltip'); rb.setAttribute('aria-label', tr('randomTooltip')); } setText('randomTooltipBox', tr('randomTooltip')); setText('allowWalkLabel', tr('allowWalkLabel')); document.querySelectorAll('#strengthSessions option').forEach((o,i)=>o.textContent=(tr('strengthSessionsOptions')[i]||o.textContent)); document.querySelectorAll('#randomness option').forEach((o,i)=>o.textContent=(tr('randomnessOptions')[i]||o.textContent)); document.querySelectorAll('#allowWalk option').forEach((o,i)=>o.textContent=(tr('allowWalkOptions')[i]||o.textContent)); }
+    function applyLanguage() { document.documentElement.lang = currentLanguage; if (els.langSelect) els.langSelect.value = currentLanguage; ['langLabel','pillWeekdays','pillDesk','pillTimer','pillVariety','heroTitle','heroDesc','stateNowTitle','labelShownDay','labelCurrentPhase','labelCountdown','labelNextAlarm','mainTimerTitle','mainTimerDesc','desktopNotice','weekSettingsTitle','startLabel','endLabel','lunchLabel','lunchMinutesLabel','sitMinutesLabel','standMinutesLabel','moveMinutesLabel','strengthPerWeekLabel','gymDaysLabel','guidedBlockTitle','blockDetailTitle','blockDetailDesc','todoTitle','todoDesc','summaryTitle','dayPlanTitle','strengthWeekTitle','strengthWeekDesc'].forEach(id=>setText(id, tr(id))); if (els.soundBtn) els.soundBtn.textContent = soundEnabled ? tr('btnSoundOn') : tr('btnEnableSound'); if (els.notifBtn) els.notifBtn.textContent = notificationsEnabled ? tr('btnNotifOn') : tr('btnEnableNotifications'); if (els.generateBtn) els.generateBtn.textContent = tr('btnGenerate'); if (els.todayBtn) els.todayBtn.textContent = tr('btnToday'); if (els.skipBtn) els.skipBtn.textContent = tr('btnSkip'); if (els.saveBtn) els.saveBtn.textContent = tr('saveBtn'); if (els.todoCompactBtn) els.todoCompactBtn.textContent = todoCompact ? tr('todoCompactOn') : tr('todoCompactOff'); if (els.todoAddBtn) els.todoAddBtn.textContent = tr('todoAddBtn'); if (els.todoInput) els.todoInput.placeholder = tr('todoPlaceholder'); const rl=document.getElementById('randomnessLabel'); if (rl && rl.firstChild) rl.firstChild.textContent = tr('randomnessLabel') + ' '; const rb=document.getElementById('randomTooltipBtn'); if (rb) { rb.title = tr('randomTooltip'); rb.setAttribute('aria-label', tr('randomTooltip')); } setText('randomTooltipBox', tr('randomTooltip')); setText('allowWalkLabel', tr('allowWalkLabel')); document.querySelectorAll('#strengthSessions option').forEach((o,i)=>o.textContent=(tr('strengthSessionsOptions')[i]||o.textContent)); document.querySelectorAll('#randomness option').forEach((o,i)=>o.textContent=(tr('randomnessOptions')[i]||o.textContent)); document.querySelectorAll('#allowWalk option').forEach((o,i)=>o.textContent=(tr('allowWalkOptions')[i]||o.textContent));
+      if (els.shownDay && (els.shownDay.textContent.includes('Cargando') || els.shownDay.textContent.includes('Loading'))) els.shownDay.textContent = tr('loadingDay');
+      if (els.shownDaySub && (els.shownDaySub.textContent.includes('Generando') || els.shownDaySub.textContent.includes('Generating'))) els.shownDaySub.textContent = tr('generatingDay');
+      if (els.currentPhase && (els.currentPhase.textContent.includes('Cargando') || els.currentPhase.textContent.includes('Loading'))) els.currentPhase.textContent = tr('loadingDay');
+      if (els.currentDescription && (els.currentDescription.textContent.includes('Preparando') || els.currentDescription.textContent.includes('Preparing'))) els.currentDescription.textContent = currentLanguage === 'en' ? 'Preparing day.' : 'Preparando el día.';
+      if (els.alarmDescription && (els.alarmDescription.textContent.includes('Activa sonido') || els.alarmDescription.textContent.includes('Enable sound'))) els.alarmDescription.textContent = currentLanguage === 'en' ? 'Enable sound to get alerts.' : 'Activa sonido para que avise.';
+      renderFitboxing(); }
 
     init();
 
@@ -1084,22 +1353,22 @@ function generateDayPlan(date, cfg, rng, includeStrength) {
         row.innerHTML = `
           <div class="event-time mono">${formatHM(evt.start)}<br><span class="small">${formatHM(evt.end)}</span></div>
           <div>
-            <div class="event-title">${evt.title}</div>
-            <div class="small">${evt.description}</div>
+            <div class="event-title">${translateEvent(evt).title}</div>
+            <div class="small">${translateEvent(evt).description}</div>
           </div>
-          <div class="tag ${WORK_TAGS[evt.type].cls}">${WORK_TAGS[evt.type].label}</div>
+          <div class="tag ${WORK_TAGS[evt.type].cls}">${workTagLabel(evt.type)}</div>
         `;
         els.timeline.appendChild(row);
       });
 
       renderStats(day);
       const parts = [];
-      if (day.fitboxing) parts.push('Este día tienes gimnasio.');
-      if (day.strength) parts.push(`La app te mete una sesión extra de fuerza: ${day.strength.title}.`);
-      if (!day.fitboxing && !day.strength) parts.push('Este día solo toca clavar pausas, bloques de pie y movimiento.');
-      parts.push(`Los bloques siguen exactamente tu base: ${settings.sitMinutes ?? 45} min sentada, ${settings.standMinutes ?? 20} min de pie y ${settings.moveMinutes ?? 5} min de movimiento.`);
-      parts.push(settings.allowWalk ? 'Has permitido caminatas cortas, así que pueden aparecer dentro de los bloques de movimiento.' : 'No has activado caminatas cortas, así que la app tira de movilidad y activación sin paseo.');
-      parts.push('La variación de ejercicios no cambia la duración de los bloques. Solo cambia el tipo y la variedad de movimientos.');
+      if (day.fitboxing) parts.push(currentLanguage === 'en' ? 'This day includes gym.' : 'Este día tienes gimnasio.');
+      if (day.strength) parts.push(currentLanguage === 'en' ? `The app adds an extra strength session: ${translateEvent(day.strength).title}.` : `La app te mete una sesión extra de fuerza: ${day.strength.title}.`);
+      if (!day.fitboxing && !day.strength) parts.push(currentLanguage === 'en' ? 'This day is all about breaks, standing blocks, and movement.' : 'Este día solo toca clavar pausas, bloques de pie y movimiento.');
+      parts.push(currentLanguage === 'en' ? `Your blocks follow your exact base: ${settings.sitMinutes ?? 45} min sitting, ${settings.standMinutes ?? 20} min standing, and ${settings.moveMinutes ?? 5} min of movement.` : `Los bloques siguen exactamente tu base: ${settings.sitMinutes ?? 45} min sentada, ${settings.standMinutes ?? 20} min de pie y ${settings.moveMinutes ?? 5} min de movimiento.`);
+      parts.push(settings.allowWalk ? (currentLanguage === 'en' ? 'Short walks are allowed, so they may appear inside movement blocks.' : 'Has permitido caminatas cortas, así que pueden aparecer dentro de los bloques de movimiento.') : (currentLanguage === 'en' ? 'Short walks are off, so the app sticks to mobility and activation without walking.' : 'No has activado caminatas cortas, así que la app tira de movilidad y activación sin paseo.'));
+      parts.push(currentLanguage === 'en' ? 'Exercise variation does not change block duration. It only changes the type and variety of movements.' : 'La variación de ejercicios no cambia la duración de los bloques. Solo cambia el tipo y la variedad de movimientos.');
       els.dayNote.textContent = parts.join(' ');
     }
 
@@ -1130,8 +1399,8 @@ function generateDayPlan(date, cfg, rng, includeStrength) {
           row.innerHTML = `
             <div class="event-time">${shortDayNames()[date.getDay()]}</div>
             <div>
-              <div class="event-title">${plan.strength.title}</div>
-              <div class="small">${formatHM(new Date(plan.strength.start))} a ${formatHM(new Date(plan.strength.end))}. ${plan.strength.description}</div>
+              <div class="event-title">${translateEvent(plan.strength).title}</div>
+              <div class="small">${formatHM(new Date(plan.strength.start))} ${currentLanguage === 'en' ? 'to' : 'a'} ${formatHM(new Date(plan.strength.end))}. ${translateEvent(plan.strength).description}</div>
             </div>
             <div class="tag strength">${tr('strengthTag')}</div>
           `;
@@ -1227,11 +1496,12 @@ function generateDayPlan(date, cfg, rng, includeStrength) {
         els.timeLeft.textContent = '--:--';
         els.nextPhase.textContent = `${tr('nextBlock')}: ${tr('preview').toLowerCase()}`;
         els.nextAlarm.textContent = '--:--';
-        els.alarmDescription.textContent = `Día mostrado: ${capitalize(dayNames()[selectedDate.getDay()])}.`;
+        els.alarmDescription.textContent = currentLanguage === 'en' ? `Shown day: ${capitalize(dayNames()[selectedDate.getDay()])}.` : `Día mostrado: ${capitalize(dayNames()[selectedDate.getDay()])}.`;
         setTimer(0, 1, tr('preview'));
         refreshTimelineCurrent(now, null);
         const previewEvent = weekPlan.days[selectedDayKey].events.find(evt => evt.type === 'move') || weekPlan.days[selectedDayKey].strength || weekPlan.days[selectedDayKey].events[0];
-        renderGuided(previewEvent ? { ...previewEvent, start: new Date(previewEvent.start), end: new Date(previewEvent.end) } : null, new Date(previewEvent ? previewEvent.start : Date.now()), true);
+        const localizedPreviewEvent = previewEvent ? translateEvent({ ...previewEvent, start: new Date(previewEvent.start), end: new Date(previewEvent.end) }) : null;
+        renderGuided(localizedPreviewEvent, new Date(previewEvent ? previewEvent.start : Date.now()), true);
         updateTabTitle('preview');
         return;
       }
@@ -1243,12 +1513,12 @@ function generateDayPlan(date, cfg, rng, includeStrength) {
         els.currentPhase.textContent = beforeStart ? tr('beforeStart') : tr('outOfHours');
         els.currentDescription.textContent = beforeStart ? tr('waitingDay') : tr('dayFinished');
         els.timeLeft.textContent = '--:--';
-        els.nextPhase.textContent = info.nextEvent ? `${tr('nextBlock')}: ${info.nextEvent.title}` : `${tr('nextBlock')}: ${tr('noBlocks')}`;
+        els.nextPhase.textContent = info.nextEvent ? `${tr('nextBlock')}: ${translateEvent(info.nextEvent).title}` : `${tr('nextBlock')}: ${tr('noBlocks')}`;
         els.nextAlarm.textContent = info.nextEvent ? formatHM(info.nextEvent.start) : '--:--';
-        els.alarmDescription.textContent = info.nextEvent ? describeEvent(info.nextEvent) : (lastEvent ? `Último bloque terminado a las ${formatHM(lastEvent.end)}.` : 'Sin bloques.');
-        setTimer(0, 1, beforeStart ? tr('beforeStart') : tr('tabEnded'));
+        els.alarmDescription.textContent = info.nextEvent ? describeEvent(info.nextEvent) : (lastEvent ? (currentLanguage === 'en' ? `Last block finished at ${formatHM(lastEvent.end)}.` : `Último bloque terminado a las ${formatHM(lastEvent.end)}.`) : (currentLanguage === 'en' ? 'No blocks.' : 'Sin bloques.'));
+        setTimer(0, 1, beforeStart ? tr('timerBefore') : tr('timerEnded'));
         refreshTimelineCurrent(now, null);
-        const guideEvent = beforeStart ? info.nextEvent : null;
+        const guideEvent = beforeStart && info.nextEvent ? translateEvent(info.nextEvent) : null;
         renderGuided(guideEvent, now, !!beforeStart);
         updateTabTitle(beforeStart ? 'before' : 'after', { time: info.nextEvent ? formatHM(info.nextEvent.start) : '--:--' });
         return;
@@ -1257,17 +1527,18 @@ function generateDayPlan(date, cfg, rng, includeStrength) {
       const current = info.currentEvent;
       const timeLeftMs = current.end - now;
       const totalMs = current.end - current.start;
-      els.currentPhase.textContent = current.title;
-      els.currentDescription.textContent = current.description;
+      const localizedCurrent = translateEvent(current);
+      els.currentPhase.textContent = localizedCurrent.title;
+      els.currentDescription.textContent = localizedCurrent.description;
       els.timeLeft.textContent = formatMMSS(Math.max(0, Math.floor(timeLeftMs / 1000)));
-      els.nextPhase.textContent = info.nextEvent ? `${tr('nextBlock')}: ${info.nextEvent.title}` : `${tr('nextBlock')}: ${tr('endOfDay')}`;
+      els.nextPhase.textContent = info.nextEvent ? `${tr('nextBlock')}: ${translateEvent(info.nextEvent).title}` : `${tr('nextBlock')}: ${tr('endOfDay')}`;
       els.nextAlarm.textContent = formatHM(current.end);
-      els.alarmDescription.textContent = info.nextEvent ? describeEvent(info.nextEvent) : 'Se acaba la jornada.';
-      setTimer(Math.max(0, totalMs - timeLeftMs), totalMs, current.title);
+      els.alarmDescription.textContent = info.nextEvent ? describeEvent(info.nextEvent) : (currentLanguage === 'en' ? 'The workday is ending.' : 'Se acaba la jornada.');
+      setTimer(Math.max(0, totalMs - timeLeftMs), totalMs, localizedCurrent.title);
       refreshTimelineCurrent(now, current.id);
       maybeAlarm(current);
-      renderGuided(current, now, false);
-      updateTabTitle('current', { timeLeft: formatMMSS(Math.max(0, Math.floor(timeLeftMs / 1000))), title: current.title });
+      renderGuided(localizedCurrent, now, false);
+      updateTabTitle('current', { timeLeft: formatMMSS(Math.max(0, Math.floor(timeLeftMs / 1000))), title: localizedCurrent.title });
     }
 
     function getCurrentInfo(now, dayKey) {
@@ -1418,20 +1689,20 @@ function generateDayPlan(date, cfg, rng, includeStrength) {
     }
 
     function getExerciseInfo(name) {
-      return EXERCISE_LIBRARY[name] || {
+      return translateInfo(EXERCISE_LIBRARY[name]) || translateInfo({
         name,
         summary: 'Sigue el temporizador y muévete con control. Si un gesto te molesta, recorta rango o cambia a una versión más fácil.',
         checklist: ['Muévete sin dolor agudo.', 'Respira y no corras.', 'Prioriza control sobre cantidad.'],
         tip: 'El objetivo aquí no es sufrir. Es meter movimiento útil.'
-      };
+      });
     }
 
     function paintExerciseDetail(info, previewMode, blockType) {
       const fallback = info || {
-        name: previewMode ? 'Vista previa' : 'Sin bloque guiado',
-        summary: previewMode ? 'Aquí verás explicado el paso principal del bloque.' : 'Cuando llegue un bloque de movimiento o fuerza, te explico qué hacer aquí.',
-        checklist: ['Mira el temporizador.', 'Sigue el paso activo.', 'Vuelve al trabajo cuando toque.'],
-        tip: 'Todo está pensado para que no tengas que improvisar.'
+        name: currentLanguage === 'en' ? (previewMode ? 'Preview' : 'No guided block') : (previewMode ? 'Vista previa' : 'Sin bloque guiado'),
+        summary: currentLanguage === 'en' ? (previewMode ? 'Here you will see the main step of the block explained.' : 'When a movement or strength block arrives, this panel explains what to do.') : (previewMode ? 'Aquí verás explicado el paso principal del bloque.' : 'Cuando llegue un bloque de movimiento o fuerza, te explico qué hacer aquí.'),
+        checklist: currentLanguage === 'en' ? ['Check the timer.','Follow the active step.','Return to work when it is time.'] : ['Mira el temporizador.', 'Sigue el paso activo.', 'Vuelve al trabajo cuando toque.'],
+        tip: currentLanguage === 'en' ? 'Everything is designed so you do not have to improvise.' : 'Todo está pensado para que no tengas que improvisar.'
       };
       els.exerciseName.textContent = fallback.name;
       els.exerciseSummary.textContent = fallback.summary;
@@ -1441,7 +1712,7 @@ function generateDayPlan(date, cfg, rng, includeStrength) {
         li.textContent = item;
         els.exerciseChecklist.appendChild(li);
       });
-      els.exerciseTip.textContent = fallback.tip || 'Hazlo suave y con control.';
+      els.exerciseTip.textContent = fallback.tip || (currentLanguage === 'en' ? 'Move gently and with control.' : 'Hazlo suave y con control.');
       els.exerciseVisual.innerHTML = buildExerciseSVG(fallback.visual || blockType || 'rest', fallback.name);
     }
 
@@ -1547,7 +1818,8 @@ function generateDayPlan(date, cfg, rng, includeStrength) {
     }
 
     function describeEvent(evt) {
-      return `${formatHM(evt.start)} · ${evt.title}`;
+      const localizedEvt = translateEvent(evt);
+      return `${formatHM(evt.start)} · ${localizedEvt.title}`;
     }
 
     function playTone(startAt, frequency, duration, type = 'square', volume = 0.2) {
