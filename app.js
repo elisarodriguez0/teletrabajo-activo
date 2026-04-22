@@ -1159,7 +1159,11 @@ function renderTodos() {
 
 
     function setBaseTabTitle(text) {
-      if (titleFlashInterval) return;
+      if (titleFlashInterval) {
+        window.__ttBaseTitle = text;
+        return;
+      }
+      window.__ttBaseTitle = text;
       document.title = text;
     }
 
@@ -1293,7 +1297,7 @@ function renderTodos() {
       stopTitleFlash();
       let on = false;
       titleFlashInterval = setInterval(() => {
-        document.title = on ? `⏰ ${title}` : BASE_TITLE;
+        document.title = on ? `⏰ ${title}` : (window.__ttBaseTitle || BASE_TITLE);
         on = !on;
       }, 800);
     }
@@ -1301,7 +1305,7 @@ function renderTodos() {
     function stopTitleFlash() {
       if (titleFlashInterval) clearInterval(titleFlashInterval);
       titleFlashInterval = null;
-      document.title = BASE_TITLE;
+      document.title = window.__ttBaseTitle || BASE_TITLE;
     }
 
 
