@@ -483,7 +483,6 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
       strengthSessions: 2,
       randomness: 'soft',
       allowWalk: false,
-      compactTodo: false,
       fitboxingDays: [2, 4]
     };
 
@@ -545,8 +544,6 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
       weekdayButtons: document.getElementById('weekdayButtons'),
       todoInput: document.getElementById('todoInput'),
       todoAddBtn: document.getElementById('todoAddBtn'),
-      compactToggleBtn: document.getElementById('compactToggleBtn'),
-      todoWrap: document.getElementById('todoWrap'),
       todoList: document.getElementById('todoList'),
     };
 
@@ -560,7 +557,6 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
       selectInitialDay();
       renderAll();
       renderTodos();
-      applyCompactTodo();
       startClock();
     }
 
@@ -618,11 +614,6 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
       els.todoAddBtn.addEventListener('click', addTodoFromInput);
       els.todoInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') addTodoFromInput();
-      });
-      els.compactToggleBtn.addEventListener('click', () => {
-        settings.compactTodo = !settings.compactTodo;
-        saveSettings(settings);
-        applyCompactTodo();
       });
       document.addEventListener('visibilitychange', () => {
         if (!document.hidden) {
@@ -689,23 +680,11 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
         empty.className = 'notice';
         empty.textContent = 'Todavía no has añadido tareas.';
         els.todoList.appendChild(empty);
-        applyCompactTodo();
         return;
       }
       todoItems.forEach(item => {
         const row = document.createElement('div');
         row.className = 'todo-item' + (item.done ? ' done' : '');
-        row.draggable = true;
-        row.dataset.id = item.id;
-        row.addEventListener('dragstart', onTodoDragStart);
-        row.addEventListener('dragover', onTodoDragOver);
-        row.addEventListener('dragleave', onTodoDragLeave);
-        row.addEventListener('drop', onTodoDrop);
-        row.addEventListener('dragend', onTodoDragEnd);
-        const drag = document.createElement('span');
-        drag.className = 'todo-drag';
-        drag.textContent = '⋮⋮';
-        drag.title = 'Arrastrar para reordenar';
         const check = document.createElement('input');
         check.type = 'checkbox';
         check.checked = item.done;
@@ -718,63 +697,11 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
         removeBtn.type = 'button';
         removeBtn.textContent = 'Borrar';
         removeBtn.addEventListener('click', () => removeTodo(item.id));
-        row.appendChild(drag);
         row.appendChild(check);
         row.appendChild(textSpan);
         row.appendChild(removeBtn);
         els.todoList.appendChild(row);
       });
-      applyCompactTodo();
-    }
-
-    function applyCompactTodo() {
-      if (!els.todoWrap || !els.compactToggleBtn) return;
-      els.todoWrap.classList.toggle('compact-floating', settings.compactTodo === true);
-      document.body.classList.toggle('compact-todo-active', settings.compactTodo === true);
-      els.compactToggleBtn.textContent = settings.compactTodo === true ? 'Quitar modo compacto lateral' : 'Modo compacto lateral';
-    }
-
-    function onTodoDragStart(e) {
-      const row = e.currentTarget;
-      row.classList.add('dragging');
-      e.dataTransfer.effectAllowed = 'move';
-      e.dataTransfer.setData('text/plain', row.dataset.id || '');
-    }
-
-    function onTodoDragOver(e) {
-      e.preventDefault();
-      e.dataTransfer.dropEffect = 'move';
-      e.currentTarget.classList.add('drag-over');
-    }
-
-    function onTodoDragLeave(e) {
-      e.currentTarget.classList.remove('drag-over');
-    }
-
-    function onTodoDrop(e) {
-      e.preventDefault();
-      const targetId = e.currentTarget.dataset.id;
-      const sourceId = e.dataTransfer.getData('text/plain');
-      e.currentTarget.classList.remove('drag-over');
-      if (!sourceId || !targetId || sourceId === targetId) return;
-      reorderTodos(sourceId, targetId);
-    }
-
-    function onTodoDragEnd(e) {
-      e.currentTarget.classList.remove('dragging');
-      els.todoList.querySelectorAll('.todo-item').forEach(el => el.classList.remove('drag-over'));
-    }
-
-    function reorderTodos(sourceId, targetId) {
-      const sourceIndex = todoItems.findIndex(item => item.id === sourceId);
-      const targetIndex = todoItems.findIndex(item => item.id === targetId);
-      if (sourceIndex < 0 || targetIndex < 0) return;
-      const updated = [...todoItems];
-      const [moved] = updated.splice(sourceIndex, 1);
-      updated.splice(targetIndex, 0, moved);
-      todoItems = updated;
-      saveTodos();
-      renderTodos();
     }
 
     function paintSettings() {
@@ -804,7 +731,6 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
         strengthSessions: Math.max(1, Math.min(3, Number(els.strengthSessions.value) || 2)),
         randomness: els.randomness.value || defaults.randomness,
         allowWalk: els.allowWalk.value === 'yes',
-        compactTodo: settings.compactTodo === true,
         fitboxingDays: [...settings.fitboxingDays].sort((a,b) => a - b)
       };
     }
@@ -942,29 +868,27 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
         let moveMinutes = randInt(minMove, maxMove, rng);
 
         let sitMaxAllowed = Math.max(20, totalMinutes - moveMinutes - 5);
-        let sitMinutes = randInt(
-          Math.max(20, Math.min(randomProfile.sitMin, sitMaxAllowed)),
-          Math.max(20, Math.min(randomProfile.sitMax, sitMaxAllowed)),
-          rng
-        );
+        let sitMinAllowed = Math.max(20, Math.min(randomProfile.sitMin, sitMaxAllowed));
+        let sitMaxRange = Math.max(sitMinAllowed, Math.min(randomProfile.sitMax, sitMaxAllowed));
+        let sitMinutes = randInt(sitMinAllowed, sitMaxRange, rng);
 
         let standMinutes = totalMinutes - sitMinutes - moveMinutes;
 
-        const minStand = 5;
-        if (standMinutes < minStand) {
-          const need = minStand - standMinutes;
-          if (sitMinutes - need >= 20) {
-            sitMinutes -= need;
+        if (standMinutes < 5) {
+          const deficit = 5 - standMinutes;
+          if (sitMinutes - deficit >= 20) {
+            sitMinutes -= deficit;
           } else {
-            moveMinutes = Math.max(3, moveMinutes - (need - Math.max(0, sitMinutes - 20)));
-            sitMinutes = Math.max(20, sitMinutes - need);
+            const sitReducible = Math.max(0, sitMinutes - 20);
+            sitMinutes -= sitReducible;
+            moveMinutes = Math.max(3, moveMinutes - (deficit - sitReducible));
           }
           standMinutes = totalMinutes - sitMinutes - moveMinutes;
         }
 
         if (standMinutes > randomProfile.standMax) {
-          const extra = standMinutes - randomProfile.standMax;
-          sitMinutes = Math.min(totalMinutes - moveMinutes - minStand, sitMinutes + extra);
+          const surplus = standMinutes - randomProfile.standMax;
+          sitMinutes = Math.min(totalMinutes - moveMinutes - 5, sitMinutes + surplus);
           standMinutes = totalMinutes - sitMinutes - moveMinutes;
         }
 
@@ -1183,7 +1107,6 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
         refreshTimelineCurrent(now, null);
         const previewEvent = weekPlan.days[selectedDayKey].events.find(evt => evt.type === 'move') || weekPlan.days[selectedDayKey].strength || weekPlan.days[selectedDayKey].events[0];
         renderGuided(previewEvent ? { ...previewEvent, start: new Date(previewEvent.start), end: new Date(previewEvent.end) } : null, new Date(previewEvent ? previewEvent.start : Date.now()), true);
-        setLiveTitle('preview');
         return;
       }
 
@@ -1201,7 +1124,6 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
         refreshTimelineCurrent(now, null);
         const guideEvent = beforeStart ? info.nextEvent : null;
         renderGuided(guideEvent, now, !!beforeStart);
-        setLiveTitle(beforeStart ? 'before' : 'done', { nextAt: info.nextEvent ? formatHM(info.nextEvent.start) : '--:--' });
         return;
       }
 
@@ -1218,7 +1140,6 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
       refreshTimelineCurrent(now, current.id);
       maybeAlarm(current);
       renderGuided(current, now, false);
-      setLiveTitle('countdown', { timeLeft: formatMMSS(Math.max(0, Math.floor(timeLeftMs / 1000))), label: current.title });
     }
 
     function getCurrentInfo(now, dayKey) {
@@ -1271,31 +1192,6 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
       } catch {}
     }
 
-
-    function setLiveTitle(mode, payload = {}) {
-      stopTitleFlash(false);
-      if (mode === 'countdown') {
-        const left = payload.timeLeft || '--:--';
-        const label = payload.label || 'Teletrabajo Activo';
-        document.title = `${left} · ${label}`;
-        return;
-      }
-      if (mode === 'before') {
-        const nextAt = payload.nextAt || '--:--';
-        document.title = `Empieza ${nextAt} · Teletrabajo Activo`;
-        return;
-      }
-      if (mode === 'preview') {
-        document.title = `Vista previa · Teletrabajo Activo`;
-        return;
-      }
-      if (mode === 'done') {
-        document.title = `Día terminado · Teletrabajo Activo`;
-        return;
-      }
-      document.title = BASE_TITLE;
-    }
-
     function startTitleFlash(title) {
       stopTitleFlash();
       let on = false;
@@ -1305,10 +1201,10 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
       }, 800);
     }
 
-    function stopTitleFlash(resetTitle = true) {
+    function stopTitleFlash() {
       if (titleFlashInterval) clearInterval(titleFlashInterval);
       titleFlashInterval = null;
-      if (resetTitle) document.title = BASE_TITLE;
+      document.title = BASE_TITLE;
     }
 
 
