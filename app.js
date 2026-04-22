@@ -1583,10 +1583,14 @@ function generateDayPlan(date, cfg, rng, includeStrength) {
       if (!('speechSynthesis' in window)) return;
       try {
         window.speechSynthesis.cancel();
-        const utter = new SpeechSynthesisUtterance(`${tr('speechPrefix')}. ${title}`);
+        const spokenTitle = currentLanguage === 'en' ? translateText(title) : title;
+        const utter = new SpeechSynthesisUtterance(`${tr('speechPrefix')}. ${spokenTitle}`);
         utter.lang = currentLanguage === 'en' ? 'en-US' : 'es-ES';
         utter.rate = 1;
         utter.volume = 1;
+        const voices = window.speechSynthesis.getVoices ? window.speechSynthesis.getVoices() : [];
+        const preferredVoice = voices.find(v => (v.lang || '').toLowerCase().startsWith(currentLanguage === 'en' ? 'en' : 'es'));
+        if (preferredVoice) utter.voice = preferredVoice;
         window.speechSynthesis.speak(utter);
       } catch {}
     }
@@ -1684,13 +1688,32 @@ function generateDayPlan(date, cfg, rng, includeStrength) {
     function normalizeExerciseName(name) {
       return String(name)
         .replace(/ · ronda \d+/gi, '')
+        .replace(/ · round \d+/gi, '')
+        .replace(/ side [AB]/gi, match => match.trim().toLowerCase() === 'side a' ? ' lado A' : ' lado B')
         .replace(/ lado [AB]/gi, match => match.trim().toLowerCase() === 'lado a' ? ' lado A' : ' lado B')
         .trim();
     }
 
+    function resolveExerciseKey(name) {
+      if (EXERCISE_LIBRARY[name]) return name;
+      const normalized = normalizeExerciseName(name);
+      if (EXERCISE_LIBRARY[normalized]) return normalized;
+
+      for (const key of Object.keys(EXERCISE_LIBRARY)) {
+        if (normalizeExerciseName(key) === normalized) return key;
+        if (currentLanguage === 'en') {
+          const translatedKey = normalizeExerciseName(translateText(key));
+          const translatedName = normalizeExerciseName(translateText(EXERCISE_LIBRARY[key].name || key));
+          if (translatedKey === normalized || translatedName === normalized) return key;
+        }
+      }
+      return normalized;
+    }
+
     function getExerciseInfo(name) {
-      return translateInfo(EXERCISE_LIBRARY[name]) || translateInfo({
-        name,
+      const resolvedName = resolveExerciseKey(name);
+      return translateInfo(EXERCISE_LIBRARY[resolvedName]) || translateInfo({
+        name: resolvedName,
         summary: 'Sigue el temporizador y muévete con control. Si un gesto te molesta, recorta rango o cambia a una versión más fácil.',
         checklist: ['Muévete sin dolor agudo.', 'Respira y no corras.', 'Prioriza control sobre cantidad.'],
         tip: 'El objetivo aquí no es sufrir. Es meter movimiento útil.'
