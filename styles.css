@@ -426,3 +426,45 @@
       }
     }
 
+
+
+    .todo-item {
+      display: grid;
+      grid-template-columns: 28px 20px minmax(0,1fr) auto;
+      align-items: center;
+      gap: 10px;
+    }
+    .todo-item .todo-remove {
+      justify-self: end;
+      align-self: center;
+      padding: 5px 8px;
+      font-size: .72rem;
+      line-height: 1;
+      min-height: 28px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .todo-item .todo-text {
+      min-width: 0;
+      word-break: break-word;
+    }
+    .app.todo-compact #summaryCard,
+    .app.todo-compact #planCard,
+    .app.todo-compact #strengthCard {
+      position: static;
+      width: auto;
+      right: auto;
+      top: auto;
+      max-height: none;
+      overflow: visible;
+      z-index: auto;
+    }
+    .app.todo-compact #summaryCard,
+    .app.todo-compact #planCard {
+      margin-right: 0;
+    }
+    .app.todo-compact .grid > #summaryCard,
+    .app.todo-compact .grid > #planCard,
+    .app.todo-compact .grid > #strengthCard {
+      grid-column: 1 / span 12;
+    }

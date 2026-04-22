@@ -561,6 +561,7 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
       renderAll();
       renderTodos();
       applyTodoCompact();
+      placeTodoCard();
       startClock();
     }
 
@@ -594,17 +595,20 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
         saveSettings(settings);
         buildWeek(true);
         renderAll();
+        placeTodoCard();
       });
 
       els.generateBtn.addEventListener('click', () => {
         buildWeek(true);
         renderAll();
+        placeTodoCard();
       });
 
       els.todayBtn.addEventListener('click', () => {
         debugOffsetMs = 0;
         selectInitialDay();
         renderAll();
+        placeTodoCard();
       });
 
       els.skipBtn.addEventListener('click', () => {
@@ -613,6 +617,7 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
         const jumpTo = new Date(info.currentEvent.end.getTime() + 1000);
         debugOffsetMs = jumpTo.getTime() - Date.now();
         renderAll();
+        placeTodoCard();
       });
 
       els.todoAddBtn.addEventListener('click', addTodoFromInput);
@@ -630,7 +635,25 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
       });
     }
 
-    function loadSettings() {
+    
+    function placeTodoCard() {
+      const todoCard = document.getElementById('todoCard');
+      const summaryCard = document.getElementById('summaryCard');
+      const strengthCard = document.getElementById('strengthCard');
+      if (!todoCard || !summaryCard || !strengthCard) return;
+
+      if (todoCompact) {
+        if (strengthCard.parentNode) {
+          strengthCard.parentNode.insertBefore(todoCard, strengthCard);
+        }
+      } else {
+        if (summaryCard.parentNode) {
+          summaryCard.parentNode.insertBefore(todoCard, summaryCard);
+        }
+      }
+    }
+
+function loadSettings() {
       const saved = localStorage.getItem('tt-active-settings-desktop');
       try {
         return saved ? { ...defaults, ...JSON.parse(saved) } : { ...defaults };
@@ -668,7 +691,8 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
     function applyTodoCompact() {
       if (!els.app || !els.todoCompactBtn) return;
       els.app.classList.toggle('todo-compact', !!todoCompact);
-      els.todoCompactBtn.textContent = todoCompact ? 'Quitar modo compacto lateral' : 'Modo compacto lateral';
+      els.todoCompactBtn.textContent = todoCompact ? 'Quitar lateral' : 'Modo compacto lateral';
+      placeTodoCard();
     }
 
     function toggleTodoCompact() {
