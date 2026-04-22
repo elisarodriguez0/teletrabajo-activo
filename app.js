@@ -905,102 +905,83 @@ function renderTodos() {
       return picked.sort((a,b) => a - b);
     }
 
-    function generateDayPlan(date, cfg, rng, includeStrength) {
+    
+    function getMovementPool(cfg) {
+      const easyNames = new Set(['Piernas + pecho', 'Desentumecer total', 'Caminata corta + movilidad']);
+      if (cfg.randomness === 'soft') {
+        return MOVEMENT_TEMPLATES.filter(t => easyNames.has(t.name));
+      }
+      return MOVEMENT_TEMPLATES;
+    }
+
+    function getStrengthPool(cfg) {
+      if (cfg.randomness === 'soft') {
+        return STRENGTH_TEMPLATES.filter(t => t.name !== 'Pierna + core');
+      }
+      return STRENGTH_TEMPLATES;
+    }
+
+
+function generateDayPlan(date, cfg, rng, includeStrength) {
       const start = atTime(date, cfg.startTime);
       const end = atTime(date, cfg.endTime);
       const lunchStart = atTime(date, cfg.lunchStart);
       const lunchEnd = new Date(lunchStart.getTime() + cfg.lunchMinutes * 60000);
-      const baseSit = cfg.sitMinutes ?? 45;
-      const baseStand = cfg.standMinutes ?? 20;
-      const baseMove = cfg.moveMinutes ?? 5;
-      const randomProfile = cfg.randomness === 'high'
-        ? {
-            sitMin: Math.max(20, baseSit - 10), sitMax: Math.min(90, baseSit + 10),
-            standMin: Math.max(5, baseStand - 6), standMax: Math.min(40, baseStand + 6),
-            moveMin: Math.max(3, baseMove - 2), moveMax: Math.min(20, baseMove + 3)
-          }
-        : cfg.randomness === 'medium'
-          ? {
-              sitMin: Math.max(20, baseSit - 5), sitMax: Math.min(90, baseSit + 5),
-              standMin: Math.max(5, baseStand - 4), standMax: Math.min(40, baseStand + 4),
-              moveMin: Math.max(3, baseMove - 1), moveMax: Math.min(20, baseMove + 2)
-            }
-          : {
-              sitMin: Math.max(20, baseSit - 2), sitMax: Math.min(90, baseSit + 2),
-              standMin: Math.max(5, baseStand - 2), standMax: Math.min(40, baseStand + 2),
-              moveMin: Math.max(3, baseMove), moveMax: Math.min(20, baseMove + 1)
-            };
 
+      const sitDuration = Math.max(20, Number(cfg.sitMinutes) || 45);
+      const standDuration = Math.max(5, Number(cfg.standMinutes) || 20);
+      const moveDuration = Math.max(3, Number(cfg.moveMinutes) || 5);
+
+      const phaseDefs = [
+        { type: 'sit', title: 'Trabajo sentada', description: 'Bloque de foco. Cambia postura al terminar.', minutes: sitDuration },
+        { type: 'stand', title: 'Trabajo de pie', description: 'Sube el escritorio, apoya bien los pies y relaja hombros.', minutes: standDuration },
+        { type: 'move', title: 'Movimiento', description: 'Bloque corto para movilidad y activación.', minutes: moveDuration }
+      ];
+
+      const movementPool = getMovementPool(cfg).filter(t => cfg.allowWalk || !t.name.toLowerCase().includes('caminata'));
       const events = [];
       let cursor = new Date(start);
       let counter = 0;
+      let phaseIndex = 0;
+      let remainingMinutes = phaseDefs[0].minutes;
 
       while (cursor < end) {
-        if (cursor.getTime() === lunchStart.getTime()) {
+        if (cursor >= lunchStart && cursor < lunchEnd) {
           events.push(makeEvent(cursor, lunchEnd, 'lunch', 'Comida', 'Comida y descanso. No hace falta forzar paseo aquí.', null, counter++));
           cursor = new Date(lunchEnd);
           continue;
         }
 
-        const nextHour = new Date(Math.min(cursor.getTime() + 60 * 60000, end.getTime(), lunchStart > cursor ? lunchStart.getTime() : end.getTime()));
-        const totalMinutes = Math.max(1, Math.round((nextHour - cursor) / 60000));
+        const phase = phaseDefs[phaseIndex];
+        const nextBoundary = cursor < lunchStart ? lunchStart : end;
+        const phaseTargetEnd = addMinutes(cursor, remainingMinutes);
+        const segmentEnd = new Date(Math.min(phaseTargetEnd.getTime(), nextBoundary.getTime(), end.getTime()));
 
-        if (totalMinutes < 20) {
-          events.push(makeEvent(cursor, nextHour, 'sit', 'Trabajo sentada', 'Bloque corto. Mantén postura cómoda y pies apoyados.', null, counter++));
-          cursor = nextHour;
-          continue;
+        if (segmentEnd <= cursor) break;
+
+        const segmentMinutes = Math.max(1, Math.round((segmentEnd - cursor) / 60000));
+
+        if (phase.type === 'move') {
+          const moveTemplate = cloneTemplate(movementPool[Math.floor(rng() * movementPool.length)]);
+          moveTemplate.steps = scaleSteps(moveTemplate.steps, segmentMinutes * 60);
+          events.push(makeEvent(cursor, segmentEnd, 'move', moveTemplate.name, moveTemplate.description, moveTemplate, counter++));
+        } else {
+          events.push(makeEvent(cursor, segmentEnd, phase.type, phase.title, phase.description, null, counter++));
         }
 
-        const minMove = Math.min(Math.max(3, randomProfile.moveMin), Math.max(3, totalMinutes - 10));
-        const maxMove = Math.min(Math.max(minMove, randomProfile.moveMax), Math.max(minMove, totalMinutes - 8));
-        let moveMinutes = randInt(minMove, maxMove, rng);
+        remainingMinutes -= segmentMinutes;
+        cursor = new Date(segmentEnd);
 
-        let sitMaxAllowed = Math.max(20, totalMinutes - moveMinutes - 5);
-        let sitMinAllowed = Math.max(20, Math.min(randomProfile.sitMin, sitMaxAllowed));
-        let sitMaxRange = Math.max(sitMinAllowed, Math.min(randomProfile.sitMax, sitMaxAllowed));
-        let sitMinutes = randInt(sitMinAllowed, sitMaxRange, rng);
-
-        let standMinutes = totalMinutes - sitMinutes - moveMinutes;
-
-        if (standMinutes < 5) {
-          const deficit = 5 - standMinutes;
-          if (sitMinutes - deficit >= 20) {
-            sitMinutes -= deficit;
-          } else {
-            const sitReducible = Math.max(0, sitMinutes - 20);
-            sitMinutes -= sitReducible;
-            moveMinutes = Math.max(3, moveMinutes - (deficit - sitReducible));
-          }
-          standMinutes = totalMinutes - sitMinutes - moveMinutes;
+        if (remainingMinutes <= 0) {
+          phaseIndex = (phaseIndex + 1) % phaseDefs.length;
+          remainingMinutes = phaseDefs[phaseIndex].minutes;
         }
-
-        if (standMinutes > randomProfile.standMax) {
-          const surplus = standMinutes - randomProfile.standMax;
-          sitMinutes = Math.min(totalMinutes - moveMinutes - 5, sitMinutes + surplus);
-          standMinutes = totalMinutes - sitMinutes - moveMinutes;
-        }
-
-        if (sitMinutes < 20) sitMinutes = 20;
-        if (moveMinutes < 3) moveMinutes = 3;
-        standMinutes = totalMinutes - sitMinutes - moveMinutes;
-
-        const movementPool = cfg.allowWalk ? MOVEMENT_TEMPLATES : MOVEMENT_TEMPLATES.filter(t => !t.name.toLowerCase().includes('caminata'));
-        const moveTemplate = cloneTemplate(movementPool[Math.floor(rng() * movementPool.length)]);
-        moveTemplate.steps = scaleSteps(moveTemplate.steps, moveMinutes * 60);
-
-        const sitEnd = addMinutes(cursor, sitMinutes);
-        const standEnd = addMinutes(sitEnd, standMinutes);
-
-        events.push(makeEvent(cursor, sitEnd, 'sit', 'Trabajo sentada', 'Bloque de foco. Cambia postura al terminar.', null, counter++));
-        events.push(makeEvent(sitEnd, standEnd, 'stand', 'Trabajo de pie', 'Sube el escritorio, apoya bien los pies y relaja hombros.', null, counter++));
-        events.push(makeEvent(standEnd, nextHour, 'move', moveTemplate.name, moveTemplate.description, moveTemplate, counter++));
-
-        cursor = nextHour;
       }
 
       let strength = null;
       if (includeStrength) {
-        const template = cloneTemplate(STRENGTH_TEMPLATES[Math.floor(rng() * STRENGTH_TEMPLATES.length)]);
+        const strengthPool = getStrengthPool(cfg);
+        const template = cloneTemplate(strengthPool[Math.floor(rng() * strengthPool.length)]);
         const expandedSteps = [];
         for (let round = 1; round <= template.rounds; round++) {
           template.steps.forEach(([name, seconds]) => {
@@ -1090,7 +1071,9 @@ function renderTodos() {
       if (day.fitboxing) parts.push('Este día tienes gimnasio.');
       if (day.strength) parts.push(`La app te mete una sesión extra de fuerza: ${day.strength.title}.`);
       if (!day.fitboxing && !day.strength) parts.push('Este día solo toca clavar pausas, bloques de pie y movimiento.');
+      parts.push(`Los bloques siguen exactamente tu base: ${settings.sitMinutes ?? 45} min sentada, ${settings.standMinutes ?? 20} min de pie y ${settings.moveMinutes ?? 5} min de movimiento.`);
       parts.push(settings.allowWalk ? 'Has permitido caminatas cortas, así que pueden aparecer dentro de los bloques de movimiento.' : 'No has activado caminatas cortas, así que la app tira de movilidad y activación sin paseo.');
+      parts.push('La variación de ejercicios no cambia la duración de los bloques. Solo cambia el tipo y la variedad de movimientos.');
       els.dayNote.textContent = parts.join(' ');
     }
 

@@ -111,12 +111,13 @@
             </select>
           </div>
           <div class="field">
-            <label for="randomness">Aleatoriedad</label>
+            <label for="randomness">Variación de ejercicios</label>
             <select id="randomness">
               <option value="soft" selected>Suave</option>
               <option value="medium">Media</option>
               <option value="high">Alta</option>
             </select>
+            <div class="small">No cambia la duración de los bloques. Solo cambia el tipo y la variedad de ejercicios.</div>
           </div>
           <div class="field">
             <label for="allowWalk">Permitir caminata corta</label>
@@ -182,6 +183,8 @@
         <h2>Plan del día</h2>
         <p id="todayLabel">Cargando plan...</p>
         <div class="timeline" id="timeline"></div>
+      </div>
+
       <div class="card" id="strengthCard" style="grid-column: span 12;">
         <h2>Sesiones de fuerza de la semana</h2>
         <p>Se colocan fuera de tus días de gimnasio. Si ya tienes gimnasio ese día, la app no te mete fuerza extra ahí.</p>
