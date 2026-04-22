@@ -152,6 +152,21 @@
         </div>
       </div>
 
+      <div class="card" id="todoCard" style="grid-column: span 12;">
+        <h2>To do list</h2>
+        <p>Añade tareas rápidas, reordénalas arrastrando y márcalas al completarlas.</p>
+        <div class="button-row" style="margin-top:0;">
+          <button class="secondary" id="todoCompactBtn">Modo compacto lateral</button>
+        </div>
+        <div class="todo-wrap">
+          <div class="todo-add">
+            <input id="todoInput" type="text" placeholder="Añade una tarea" />
+            <button class="good" id="todoAddBtn">Añadir tarea</button>
+          </div>
+          <div class="todo-list" id="todoList"></div>
+        </div>
+
+
       <div class="card" style="grid-column: span 12;">
         <h2>Resumen del día mostrado</h2>
         <div class="summary-band">
@@ -168,16 +183,6 @@
         <div class="timeline" id="timeline"></div>
       </div>
 
-      <div class="card" style="grid-column: span 12;">
-        <h2>To do list</h2>
-        <p>Añade tareas rápidas y ve tachándolas según las completes.</p>
-        <div class="todo-wrap">
-          <div class="todo-add">
-            <input id="todoInput" type="text" placeholder="Añade una tarea" />
-            <button class="good" id="todoAddBtn">Añadir tarea</button>
-          </div>
-          <div class="todo-list" id="todoList"></div>
-        </div>
       </div>
 
       <div class="card" style="grid-column: span 12;">
@@ -187,10 +192,6 @@
       </div>
     </section>
   </div>
-    </div>
-  </div>
-
-  
   <script src="app.js"></script>
 </body>
 </html>

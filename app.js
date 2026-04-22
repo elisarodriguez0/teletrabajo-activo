@@ -498,8 +498,10 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
     let titleFlashInterval = null;
     const BASE_TITLE = document.title;
     let todoItems = loadTodos();
+    let todoCompact = loadTodoCompact();
 
     const els = {
+      app: document.querySelector('.app'),
       shownDay: document.getElementById('shownDay'),
       shownDaySub: document.getElementById('shownDaySub'),
       currentPhase: document.getElementById('currentPhase'),
@@ -544,6 +546,7 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
       weekdayButtons: document.getElementById('weekdayButtons'),
       todoInput: document.getElementById('todoInput'),
       todoAddBtn: document.getElementById('todoAddBtn'),
+      todoCompactBtn: document.getElementById('todoCompactBtn'),
       todoList: document.getElementById('todoList'),
     };
 
@@ -557,6 +560,7 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
       selectInitialDay();
       renderAll();
       renderTodos();
+      applyTodoCompact();
       startClock();
     }
 
@@ -612,6 +616,7 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
       });
 
       els.todoAddBtn.addEventListener('click', addTodoFromInput);
+      els.todoCompactBtn.addEventListener('click', toggleTodoCompact);
       els.todoInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') addTodoFromInput();
       });
@@ -651,6 +656,27 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
       localStorage.setItem('tt-active-todos', JSON.stringify(todoItems));
     }
 
+
+    function loadTodoCompact() {
+      return localStorage.getItem('tt-active-todo-compact') === 'true';
+    }
+
+    function saveTodoCompact() {
+      localStorage.setItem('tt-active-todo-compact', todoCompact ? 'true' : 'false');
+    }
+
+    function applyTodoCompact() {
+      if (!els.app || !els.todoCompactBtn) return;
+      els.app.classList.toggle('todo-compact', !!todoCompact);
+      els.todoCompactBtn.textContent = todoCompact ? 'Quitar modo compacto lateral' : 'Modo compacto lateral';
+    }
+
+    function toggleTodoCompact() {
+      todoCompact = !todoCompact;
+      saveTodoCompact();
+      applyTodoCompact();
+    }
+
     function addTodoFromInput() {
       const value = (els.todoInput.value || '').trim();
       if (!value) return;
@@ -672,7 +698,8 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
       renderTodos();
     }
 
-    function renderTodos() {
+    
+function renderTodos() {
       if (!els.todoList) return;
       els.todoList.innerHTML = '';
       if (!todoItems.length) {
@@ -682,26 +709,69 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
         els.todoList.appendChild(empty);
         return;
       }
+
       todoItems.forEach(item => {
         const row = document.createElement('div');
-        row.className = 'todo-item' + (item.done ? ' done' : '');
+        row.className = 'todo-item' + (item.done ? ' done' : '') + (todoCompact ? ' compact-card' : '');
+        row.draggable = true;
+        row.dataset.id = item.id;
+
+        row.addEventListener('dragstart', () => {
+          row.classList.add('dragging');
+        });
+        row.addEventListener('dragend', () => {
+          row.classList.remove('dragging');
+          saveTodos();
+          renderTodos();
+        });
+        row.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          const dragging = els.todoList.querySelector('.dragging');
+          if (!dragging || dragging === row) return;
+          const rect = row.getBoundingClientRect();
+          const after = e.clientY > rect.top + rect.height / 2;
+          els.todoList.insertBefore(dragging, after ? row.nextSibling : row);
+        });
+
+        const handle = document.createElement('div');
+        handle.className = 'todo-handle';
+        handle.textContent = '⋮⋮';
+
         const check = document.createElement('input');
         check.type = 'checkbox';
         check.checked = item.done;
         check.addEventListener('change', () => toggleTodo(item.id));
+
+        const textWrap = document.createElement('div');
+        textWrap.style.flex = '1';
         const textSpan = document.createElement('span');
         textSpan.className = 'todo-text';
         textSpan.textContent = item.text;
+        textWrap.appendChild(textSpan);
+
         const removeBtn = document.createElement('button');
         removeBtn.className = 'todo-remove';
         removeBtn.type = 'button';
         removeBtn.textContent = 'Borrar';
         removeBtn.addEventListener('click', () => removeTodo(item.id));
+
+        row.appendChild(handle);
         row.appendChild(check);
-        row.appendChild(textSpan);
+        row.appendChild(textWrap);
         row.appendChild(removeBtn);
         els.todoList.appendChild(row);
       });
+
+      persistTodoOrderFromDOM();
+    }
+
+    function persistTodoOrderFromDOM() {
+      if (!els.todoList) return;
+      const ids = [...els.todoList.querySelectorAll('.todo-item[data-id]')].map(el => el.dataset.id);
+      if (!ids.length) return;
+      const byId = new Map(todoItems.map(item => [item.id, item]));
+      todoItems = ids.map(id => byId.get(id)).filter(Boolean);
+      saveTodos();
     }
 
     function paintSettings() {
@@ -1087,6 +1157,30 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
       clockInterval = setInterval(updateLiveState, 1000);
     }
 
+
+    function setBaseTabTitle(text) {
+      if (titleFlashInterval) return;
+      document.title = text;
+    }
+
+    function updateTabTitle(state, payload = {}) {
+      if (state === 'preview') {
+        setBaseTabTitle('Vista previa · Teletrabajo Activo');
+        return;
+      }
+      if (state === 'before') {
+        setBaseTabTitle(`Empieza ${payload.time || '--:--'} · Teletrabajo Activo`);
+        return;
+      }
+      if (state === 'after') {
+        setBaseTabTitle('Día terminado · Teletrabajo Activo');
+        return;
+      }
+      if (state === 'current') {
+        setBaseTabTitle(`${payload.timeLeft || '--:--'} · ${payload.title || 'Bloque activo'}`);
+      }
+    }
+
     function updateLiveState() {
       if (!weekPlan || !selectedDayKey || !weekPlan.days[selectedDayKey]) return;
 
@@ -1107,6 +1201,7 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
         refreshTimelineCurrent(now, null);
         const previewEvent = weekPlan.days[selectedDayKey].events.find(evt => evt.type === 'move') || weekPlan.days[selectedDayKey].strength || weekPlan.days[selectedDayKey].events[0];
         renderGuided(previewEvent ? { ...previewEvent, start: new Date(previewEvent.start), end: new Date(previewEvent.end) } : null, new Date(previewEvent ? previewEvent.start : Date.now()), true);
+        updateTabTitle('preview');
         return;
       }
 
@@ -1124,6 +1219,7 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
         refreshTimelineCurrent(now, null);
         const guideEvent = beforeStart ? info.nextEvent : null;
         renderGuided(guideEvent, now, !!beforeStart);
+        updateTabTitle(beforeStart ? 'before' : 'after', { time: info.nextEvent ? formatHM(info.nextEvent.start) : '--:--' });
         return;
       }
 
@@ -1140,6 +1236,7 @@ const DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'vierne
       refreshTimelineCurrent(now, current.id);
       maybeAlarm(current);
       renderGuided(current, now, false);
+      updateTabTitle('current', { timeLeft: formatMMSS(Math.max(0, Math.floor(timeLeftMs / 1000))), title: current.title });
     }
 
     function getCurrentInfo(now, dayKey) {

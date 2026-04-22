@@ -402,3 +402,60 @@
       .event { grid-template-columns: 78px 1fr; }
       .event .tag { grid-column: 2; width: fit-content; }
     }
+
+    .todo-item {
+      cursor: grab;
+      user-select: none;
+    }
+    .todo-item.dragging {
+      opacity: .6;
+      border-style: dashed;
+    }
+    .todo-item .todo-handle {
+      width: 28px;
+      min-width: 28px;
+      text-align: center;
+      color: var(--muted);
+      font-weight: 900;
+      cursor: grab;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 6px 0;
+      background: #f8fafc;
+    }
+    .todo-item.compact-card {
+      padding: 10px;
+    }
+    .app.todo-compact {
+      max-width: none;
+      margin: 0;
+      padding-right: 360px;
+    }
+    .app.todo-compact #todoCard {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      width: 320px;
+      max-height: calc(100vh - 32px);
+      overflow: auto;
+      z-index: 30;
+    }
+    .todo-meta {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: .9rem;
+      margin-top: 4px;
+    }
+    @media (max-width: 1200px) {
+      .app.todo-compact {
+        padding-right: 0;
+      }
+      .app.todo-compact #todoCard {
+        position: static;
+        width: auto;
+        max-height: none;
+      }
+    }
